@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fbf7f0;
+  --foreground: #1c1407;
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* KPI card */
+.card {
+  @apply bg-white rounded-2xl shadow-sm border border-kinz-100 p-5;
+}
+
+.kpi-value {
+  @apply text-3xl font-semibold text-kinz-700;
+}
+
+.kpi-label {
+  @apply text-xs uppercase tracking-wide text-kinz-400;
+}
