@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: kinz-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-kinz_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_prod}
+      POSTGRES_DB: ${POSTGRES_DB:-kinz_commerce}
+    ports:
+      - "5432:5432"
+    volumes:
+      - kinz_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-kinz_app}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kinz-api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-kinz_app}:${POSTGRES_PASSWORD:-change_me_in_prod}@db:5432/${POSTGRES_DB:-kinz_commerce}
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-me-in-production-please}
+      JWT_ALGORITHM: HS256
+      JWT_EXPIRE_MINUTES: 60
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      AUDIT_LOG_PATH: /var/log/kinz/audit.log
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      ETL_RAW_DIR: /app/data/raw
+      ETL_PROCESSED_DIR: /app/data/processed
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data:ro
+      - kinz_audit:/var/log/kinz
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  web:
+    image: node:20-alpine
+    container_name: kinz-web
+    working_dir: /app
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://api:8000
+      NODE_ENV: development
+    command: sh -c "npm install && npm run dev -- -H 0.0.0.0"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/frontend:/app
+      - /app/node_modules
+
+volumes:
+  kinz_pgdata:
+  kinz_audit:
