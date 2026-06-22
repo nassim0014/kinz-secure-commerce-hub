@@ -1,0 +1,31 @@
+product_id,handle,name,category,product_type,price_tnd,cost_tnd,margin_tnd,stock_units,vendor,url
+KINZ-001,trousse-jasmin,Pack Jasmin + Trousse offerte,Accessories,Cosmétique,99.000,38.482,60.518,21,KINZ,https://www.kinzoils.com/products/trousse-jasmin
+KINZ-002,coffret-routine-simpliste-dhydratation-eclat-naturel,Pack Hydratation & Anti-Tâches - L'Essentiel Éclat,Gift Sets,Cosmétique,99.000,40.200,58.800,77,KINZ,https://www.kinzoils.com/products/coffret-routine-simpliste-dhydratation-eclat-naturel
+KINZ-003,coffret-routine-complete-anti-age-eclat-naturel,Pack Anti-Âge & Éclat Naturel - Routine Complète (2 produits gratuits🎁),Gift Sets,Cosmétique,157.000,49.917,107.083,203,KINZ,https://www.kinzoils.com/products/coffret-routine-complete-anti-age-eclat-naturel
+KINZ-004,coffret-routine-essentielle-anti-age,Pack l'Essentiel Anti-âge - Routine Simpliste,Gift Sets,Cosmétique,124.000,36.881,87.119,204,KINZ,https://www.kinzoils.com/products/coffret-routine-essentielle-anti-age
+KINZ-005,trousse-blanc-casse-signee-kinz,Trousse Blanc-cassé - Signée Kinz,Accessories,Cosmétique,19.900,8.590,11.310,37,KINZ,https://www.kinzoils.com/products/trousse-blanc-casse-signee-kinz
+KINZ-006,trousse-rose-clair-signee-kinz,Trousse Rose Clair - Signée Kinz,Accessories,Cosmétique,19.900,7.570,12.330,23,KINZ,https://www.kinzoils.com/products/trousse-rose-clair-signee-kinz
+KINZ-007,trousse-verte-signee-kinz,Trousse Verte - Signée Kinz,Accessories,Cosmétique,19.900,5.673,14.227,70,KINZ,https://www.kinzoils.com/products/trousse-verte-signee-kinz
+KINZ-008,trio-floral-jasmin,Trio Floral - Jasmin,Gift Sets,Cosmétique,50.000,15.978,34.022,169,KINZ,https://www.kinzoils.com/products/trio-floral-jasmin
+KINZ-009,trio-framboise,Trio fruité - Framboise,Gift Sets,Cosmétique,50.000,14.226,35.774,65,KINZ,https://www.kinzoils.com/products/trio-framboise
+KINZ-010,trio-bergamote-verveine,Trio Fresh & Tonique - Bergamote-Verveine,Gift Sets,Cosmétique,50.000,20.086,29.914,194,KINZ,https://www.kinzoils.com/products/trio-bergamote-verveine
+KINZ-011,duo-bergamote-verveine,Duo Fresh & Tonique - Bergamote-Verveine,Gift Sets,Cosmétique,33.000,12.297,20.703,71,KINZ,https://www.kinzoils.com/products/duo-bergamote-verveine
+KINZ-012,duo-framboise,Duo Fruité - Framboise,Gift Sets,Cosmétique,33.000,11.760,21.240,86,KINZ,https://www.kinzoils.com/products/duo-framboise
+KINZ-013,brume-parfumee-bergamote,Brume parfumée Bergamote,Fragrance,Cosmétique,24.000,10.022,13.978,16,KINZ,https://www.kinzoils.com/products/brume-parfumee-bergamote
+KINZ-014,gel-douche-bergamote,Gel douche Bergamote,Body Care,Cosmétique,20.000,8.180,11.820,55,KINZ,https://www.kinzoils.com/products/gel-douche-bergamote
+KINZ-015,lait-de-corps-bergamote,Lait de corps Bergamote - 125ml,Body Care,Cosmétique,20.000,7.974,12.026,102,KINZ,https://www.kinzoils.com/products/lait-de-corps-bergamote
+KINZ-016,huile-seche-pailletee-bergamote,Huile sèche pailletée Bergamote,Vegetable Oils,Cosmétique,35.000,11.453,23.547,70,KINZ,https://www.kinzoils.com/products/huile-seche-pailletee-bergamote
+KINZ-017,brume-parfumee-jasmin,Brume parfumée Jasmin,Fragrance,Cosmétique,24.000,10.625,13.375,101,KINZ,https://www.kinzoils.com/products/brume-parfumee-jasmin
+KINZ-018,gel-douche-jasmin,Gel douche jasmin,Body Care,Cosmétique,20.000,5.948,14.052,112,KINZ,https://www.kinzoils.com/products/gel-douche-jasmin
+KINZ-019,lait-de-corps-jasmin,Lait de corps jasmin - 125ml,Body Care,Cosmétique,20.000,5.929,14.071,231,KINZ,https://www.kinzoils.com/products/lait-de-corps-jasmin
+KINZ-020,huile-seche-jasmin,Huile sèche Jasmin,Vegetable Oils,Cosmétique,35.000,11.847,23.153,82,KINZ,https://www.kinzoils.com/products/huile-seche-jasmin
+KINZ-021,huile-seche-pailletee-framboise,Huile sèche pailletée Framboise,Vegetable Oils,Cosmétique,35.000,14.602,20.398,201,KINZ,https://www.kinzoils.com/products/huile-seche-pailletee-framboise
+KINZ-022,gel-douche-framboise,Gel douche Framboise,Body Care,Cosmétique,20.000,7.162,12.838,46,KINZ,https://www.kinzoils.com/products/gel-douche-framboise
+KINZ-023,brume-parfumee-framboise,Brume parfumée Framboise,Fragrance,Cosmétique,24.000,10.690,13.310,111,KINZ,https://www.kinzoils.com/products/brume-parfumee-framboise
+KINZ-024,lait-de-corps-framboise,Lait de corps Framboise - 125ml,Body Care,Cosmétique,20.000,5.868,14.132,90,KINZ,https://www.kinzoils.com/products/lait-de-corps-framboise
+KINZ-025,trousse-framboise,Pack Framboise + Trousse offerte,Accessories,Cosmétique,99.000,41.679,57.321,173,KINZ,https://www.kinzoils.com/products/trousse-framboise
+KINZ-026,trousse-bergamote-verveine,Pack Bergamote & Verveine + Trousse offerte,Accessories,Cosmétique,99.000,42.622,56.378,107,KINZ,https://www.kinzoils.com/products/trousse-bergamote-verveine
+KINZ-027,creme-contour-des-yeux,Crème Contour des Yeux - 18ml,Skincare,Cosmétique,49.000,18.529,30.471,195,KINZ,https://www.kinzoils.com/products/creme-contour-des-yeux
+KINZ-028,creme-mains-10-uree-hydratation-intense-amp-sensation-de-fraicheur,Crème Mains 10% Urée - 50gr,Skincare,Cosmétique,20.000,5.836,14.164,184,KINZ,https://www.kinzoils.com/products/creme-mains-10-uree-hydratation-intense-amp-sensation-de-fraicheur
+KINZ-029,serum-eclat-vitamine-c-alpha-arbutine,Vitamine C & Alpha Arbutine - 30ml,Cosmétique,Cosmétique,49.000,15.618,33.382,89,KINZ,https://www.kinzoils.com/products/serum-eclat-vitamine-c-alpha-arbutine
+KINZ-030,lait-de-corps-monoi,Lait de corps monoï - 250ml,Body Care,Cosmétique,35.000,15.662,19.338,233,KINZ,https://www.kinzoils.com/products/lait-de-corps-monoi
