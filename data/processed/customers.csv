@@ -1,0 +1,501 @@
+customer_id,city,channel,segment,customer_type,first_order_date,marketing_opt_in
+CUST-0001,Kairouan,B2B Spa,Gold,B2B,2024-01-09,True
+CUST-0002,Gabès,B2C Web,Bronze,B2C,2023-03-15,True
+CUST-0003,Sousse,B2C Instagram,Bronze,B2C,2024-04-18,True
+CUST-0004,La Marsa,B2C Facebook,Bronze,B2C,2023-11-29,False
+CUST-0005,Mahdia,B2C Web,Gold,B2C,2023-11-20,True
+CUST-0006,Sfax,B2C Web,Gold,B2C,2023-11-19,True
+CUST-0007,Gafsa,B2C Instagram,Gold,B2C,2024-04-14,True
+CUST-0008,Sousse,B2C Web,Silver,B2C,2023-09-27,True
+CUST-0009,Ariana,B2B Spa,Silver,B2B,2023-05-22,True
+CUST-0010,Sfax,B2B Pharmacy,Silver,B2B,2023-06-13,False
+CUST-0011,Ariana,B2C Facebook,Bronze,B2C,2024-04-24,True
+CUST-0012,Monastir,B2B Spa,Gold,B2B,2024-07-03,False
+CUST-0013,Mahdia,B2C Facebook,Bronze,B2C,2024-03-21,True
+CUST-0014,Tunis,B2B Reseller,Silver,B2B,2024-05-27,False
+CUST-0015,Monastir,B2B Spa,Silver,B2B,2024-06-03,True
+CUST-0016,Sousse,B2C Instagram,Bronze,B2C,2024-06-27,False
+CUST-0017,Ben Arous,B2C Web,Bronze,B2C,2024-01-07,False
+CUST-0018,Kasserine,B2B Pharmacy,Silver,B2B,2024-08-03,False
+CUST-0019,Sfax,B2B Pharmacy,Platinum,B2B,2024-06-29,False
+CUST-0020,Sousse,B2C Facebook,Gold,B2C,2023-06-19,True
+CUST-0021,Kasserine,B2C Facebook,Platinum,B2C,2024-07-06,False
+CUST-0022,Nabeul,B2C Web,Bronze,B2C,2024-01-18,True
+CUST-0023,Monastir,B2C Instagram,Bronze,B2C,2023-03-07,True
+CUST-0024,Ben Arous,B2C Facebook,Silver,B2C,2023-01-08,True
+CUST-0025,La Marsa,B2C Web,Bronze,B2C,2023-02-02,False
+CUST-0026,Sfax,B2C Instagram,Bronze,B2C,2024-05-12,True
+CUST-0027,Sousse,B2B Pharmacy,Gold,B2B,2023-09-06,False
+CUST-0028,Mahdia,B2C Instagram,Bronze,B2C,2024-03-17,True
+CUST-0029,Ariana,B2C Instagram,Silver,B2C,2023-04-11,True
+CUST-0030,Nabeul,B2C Web,Gold,B2C,2023-09-12,True
+CUST-0031,Monastir,B2C Instagram,Bronze,B2C,2023-10-13,True
+CUST-0032,Kasserine,B2B Reseller,Platinum,B2B,2024-07-17,True
+CUST-0033,La Marsa,B2B Reseller,Platinum,B2B,2023-08-31,True
+CUST-0034,Gafsa,B2C Instagram,Gold,B2C,2023-03-02,True
+CUST-0035,Tunis,B2B Reseller,Gold,B2B,2024-04-10,True
+CUST-0036,Nabeul,B2B Reseller,Gold,B2B,2024-05-13,True
+CUST-0037,Bizerte,B2C Web,Bronze,B2C,2024-07-09,True
+CUST-0038,Gabès,B2C Web,Silver,B2C,2024-05-29,False
+CUST-0039,Monastir,B2C Web,Platinum,B2C,2023-03-24,False
+CUST-0040,Sfax,B2C Facebook,Silver,B2C,2023-08-29,True
+CUST-0041,Ben Arous,B2C Web,Silver,B2C,2023-03-25,True
+CUST-0042,Ben Arous,B2C Facebook,Bronze,B2C,2023-09-25,True
+CUST-0043,Nabeul,B2C Web,Bronze,B2C,2023-05-15,True
+CUST-0044,Bizerte,B2C Instagram,Gold,B2C,2023-03-16,True
+CUST-0045,Ben Arous,B2B Reseller,Bronze,B2B,2023-08-07,True
+CUST-0046,Sousse,B2B Reseller,Platinum,B2B,2024-01-14,True
+CUST-0047,Gafsa,B2B Spa,Gold,B2B,2024-06-25,True
+CUST-0048,Kasserine,B2C Facebook,Gold,B2C,2023-04-17,False
+CUST-0049,Sousse,B2C Web,Gold,B2C,2024-07-20,True
+CUST-0050,Bizerte,B2C Facebook,Silver,B2C,2023-07-28,True
+CUST-0051,Kasserine,B2C Web,Bronze,B2C,2023-02-22,True
+CUST-0052,Ariana,B2B Spa,Silver,B2B,2023-05-14,True
+CUST-0053,Bizerte,B2C Web,Bronze,B2C,2024-03-13,True
+CUST-0054,Sfax,B2C Web,Gold,B2C,2023-06-02,True
+CUST-0055,Kasserine,B2C Instagram,Silver,B2C,2024-03-16,True
+CUST-0056,Bizerte,B2C Instagram,Gold,B2C,2023-02-10,False
+CUST-0057,Kairouan,B2C Facebook,Silver,B2C,2023-12-29,False
+CUST-0058,Kasserine,B2C Instagram,Silver,B2C,2023-06-08,False
+CUST-0059,Kairouan,B2B Spa,Platinum,B2B,2024-02-27,True
+CUST-0060,Nabeul,B2B Reseller,Gold,B2B,2023-09-12,True
+CUST-0061,Mahdia,B2B Pharmacy,Bronze,B2B,2024-04-26,True
+CUST-0062,Kasserine,B2B Spa,Platinum,B2B,2023-08-22,True
+CUST-0063,La Marsa,B2C Web,Bronze,B2C,2023-03-13,False
+CUST-0064,Bizerte,B2C Instagram,Silver,B2C,2024-07-03,True
+CUST-0065,Tunis,B2C Web,Platinum,B2C,2023-07-02,True
+CUST-0066,Bizerte,B2C Web,Silver,B2C,2023-12-20,True
+CUST-0067,Gabès,B2C Instagram,Platinum,B2C,2023-04-29,True
+CUST-0068,Ben Arous,B2C Web,Bronze,B2C,2024-03-22,True
+CUST-0069,Mahdia,B2C Instagram,Silver,B2C,2023-07-21,True
+CUST-0070,Sfax,B2B Reseller,Gold,B2B,2023-05-08,True
+CUST-0071,Bizerte,B2C Instagram,Silver,B2C,2023-12-01,True
+CUST-0072,Bizerte,B2C Facebook,Bronze,B2C,2024-01-24,True
+CUST-0073,Sousse,B2C Facebook,Bronze,B2C,2024-07-15,False
+CUST-0074,Bizerte,B2C Web,Bronze,B2C,2024-08-16,True
+CUST-0075,Gabès,B2C Instagram,Bronze,B2C,2023-08-07,True
+CUST-0076,Mahdia,B2B Spa,Silver,B2B,2023-03-28,True
+CUST-0077,La Marsa,B2C Facebook,Bronze,B2C,2023-08-29,True
+CUST-0078,Kairouan,B2B Pharmacy,Bronze,B2B,2024-05-01,True
+CUST-0079,Mahdia,B2C Web,Bronze,B2C,2024-08-12,True
+CUST-0080,Nabeul,B2C Instagram,Bronze,B2C,2023-06-01,True
+CUST-0081,Tunis,B2B Spa,Platinum,B2B,2024-03-11,True
+CUST-0082,Mahdia,B2B Reseller,Bronze,B2B,2023-09-13,False
+CUST-0083,Sfax,B2C Instagram,Gold,B2C,2024-06-27,False
+CUST-0084,Ben Arous,B2C Web,Silver,B2C,2024-03-29,True
+CUST-0085,Nabeul,B2B Spa,Platinum,B2B,2024-04-01,False
+CUST-0086,Nabeul,B2B Spa,Gold,B2B,2023-10-11,False
+CUST-0087,Monastir,B2C Instagram,Bronze,B2C,2024-03-26,True
+CUST-0088,Bizerte,B2C Web,Bronze,B2C,2024-07-07,True
+CUST-0089,Sousse,B2C Web,Silver,B2C,2023-08-08,True
+CUST-0090,Ariana,B2C Web,Bronze,B2C,2023-03-05,True
+CUST-0091,Ariana,B2C Instagram,Silver,B2C,2023-01-21,False
+CUST-0092,Mahdia,B2C Facebook,Bronze,B2C,2023-12-27,True
+CUST-0093,Ariana,B2B Spa,Gold,B2B,2024-07-13,False
+CUST-0094,Kairouan,B2C Instagram,Bronze,B2C,2024-05-12,True
+CUST-0095,Gabès,B2C Facebook,Silver,B2C,2023-06-19,False
+CUST-0096,Sousse,B2B Reseller,Platinum,B2B,2024-07-31,True
+CUST-0097,Sfax,B2C Facebook,Bronze,B2C,2024-04-17,True
+CUST-0098,Bizerte,B2C Instagram,Bronze,B2C,2023-12-01,True
+CUST-0099,Ariana,B2C Web,Platinum,B2C,2024-03-07,True
+CUST-0100,Sfax,B2C Instagram,Silver,B2C,2023-02-23,False
+CUST-0101,Gabès,B2C Web,Bronze,B2C,2023-02-11,False
+CUST-0102,Kairouan,B2C Web,Bronze,B2C,2023-06-06,True
+CUST-0103,Gafsa,B2C Facebook,Silver,B2C,2023-08-12,True
+CUST-0104,Bizerte,B2B Pharmacy,Gold,B2B,2023-04-28,False
+CUST-0105,Sousse,B2B Reseller,Bronze,B2B,2023-11-16,True
+CUST-0106,Ariana,B2C Instagram,Silver,B2C,2023-03-19,True
+CUST-0107,Kasserine,B2C Facebook,Bronze,B2C,2023-11-05,False
+CUST-0108,Ben Arous,B2B Pharmacy,Gold,B2B,2023-02-12,True
+CUST-0109,Ariana,B2C Facebook,Bronze,B2C,2023-12-16,True
+CUST-0110,Ariana,B2B Spa,Platinum,B2B,2024-04-15,True
+CUST-0111,Ariana,B2C Web,Silver,B2C,2023-10-04,True
+CUST-0112,Monastir,B2B Pharmacy,Platinum,B2B,2023-10-02,True
+CUST-0113,Kairouan,B2B Spa,Platinum,B2B,2023-09-07,False
+CUST-0114,Ben Arous,B2C Facebook,Bronze,B2C,2023-01-30,True
+CUST-0115,Gabès,B2C Web,Bronze,B2C,2023-09-22,True
+CUST-0116,Ben Arous,B2B Pharmacy,Bronze,B2B,2023-07-15,True
+CUST-0117,Nabeul,B2C Instagram,Silver,B2C,2023-09-04,True
+CUST-0118,La Marsa,B2B Pharmacy,Bronze,B2B,2023-10-29,True
+CUST-0119,Nabeul,B2C Web,Silver,B2C,2024-01-13,True
+CUST-0120,Monastir,B2C Web,Platinum,B2C,2024-07-17,True
+CUST-0121,Nabeul,B2C Instagram,Bronze,B2C,2023-08-25,True
+CUST-0122,Kairouan,B2C Web,Silver,B2C,2023-07-09,True
+CUST-0123,Nabeul,B2C Instagram,Silver,B2C,2024-06-21,True
+CUST-0124,Sfax,B2B Spa,Silver,B2B,2023-11-06,True
+CUST-0125,Monastir,B2C Web,Bronze,B2C,2023-02-25,True
+CUST-0126,Nabeul,B2B Reseller,Gold,B2B,2023-04-16,False
+CUST-0127,Ben Arous,B2C Web,Bronze,B2C,2023-12-15,True
+CUST-0128,Tunis,B2C Web,Gold,B2C,2023-04-27,False
+CUST-0129,Ariana,B2C Instagram,Silver,B2C,2023-02-24,True
+CUST-0130,Mahdia,B2C Facebook,Bronze,B2C,2023-09-12,True
+CUST-0131,Mahdia,B2C Instagram,Silver,B2C,2023-08-20,False
+CUST-0132,Ariana,B2C Instagram,Bronze,B2C,2024-03-15,True
+CUST-0133,Ben Arous,B2C Web,Platinum,B2C,2023-04-12,False
+CUST-0134,Kairouan,B2C Facebook,Bronze,B2C,2023-03-25,True
+CUST-0135,Sousse,B2C Facebook,Bronze,B2C,2024-02-23,True
+CUST-0136,Ben Arous,B2C Instagram,Bronze,B2C,2023-10-23,True
+CUST-0137,Nabeul,B2B Spa,Silver,B2B,2023-09-28,False
+CUST-0138,La Marsa,B2C Facebook,Gold,B2C,2023-07-22,True
+CUST-0139,Monastir,B2C Web,Bronze,B2C,2023-09-30,False
+CUST-0140,Sfax,B2C Web,Silver,B2C,2024-08-05,False
+CUST-0141,Gafsa,B2C Web,Silver,B2C,2024-02-17,False
+CUST-0142,Monastir,B2C Instagram,Bronze,B2C,2023-02-10,False
+CUST-0143,Nabeul,B2C Web,Bronze,B2C,2023-04-04,True
+CUST-0144,La Marsa,B2B Spa,Platinum,B2B,2023-10-03,True
+CUST-0145,Mahdia,B2B Pharmacy,Gold,B2B,2023-10-12,True
+CUST-0146,Ben Arous,B2C Instagram,Gold,B2C,2023-04-04,True
+CUST-0147,Ariana,B2C Web,Silver,B2C,2023-06-14,True
+CUST-0148,Nabeul,B2C Instagram,Silver,B2C,2024-02-15,False
+CUST-0149,Monastir,B2C Web,Bronze,B2C,2023-09-16,True
+CUST-0150,Mahdia,B2C Instagram,Silver,B2C,2023-01-02,True
+CUST-0151,Monastir,B2C Instagram,Bronze,B2C,2024-06-14,True
+CUST-0152,Mahdia,B2C Instagram,Bronze,B2C,2023-02-22,True
+CUST-0153,Monastir,B2C Web,Bronze,B2C,2024-05-11,True
+CUST-0154,La Marsa,B2C Facebook,Bronze,B2C,2023-06-12,True
+CUST-0155,Tunis,B2C Facebook,Bronze,B2C,2023-04-27,True
+CUST-0156,Sfax,B2C Facebook,Bronze,B2C,2023-10-26,True
+CUST-0157,Bizerte,B2C Instagram,Bronze,B2C,2024-04-28,True
+CUST-0158,Monastir,B2C Web,Bronze,B2C,2024-06-04,True
+CUST-0159,Sousse,B2B Spa,Gold,B2B,2024-02-29,True
+CUST-0160,Mahdia,B2C Instagram,Gold,B2C,2023-10-17,True
+CUST-0161,Kasserine,B2C Facebook,Platinum,B2C,2024-05-16,False
+CUST-0162,Gafsa,B2C Instagram,Bronze,B2C,2024-07-19,False
+CUST-0163,Ariana,B2C Instagram,Bronze,B2C,2023-07-13,False
+CUST-0164,Kairouan,B2C Facebook,Bronze,B2C,2024-02-25,True
+CUST-0165,Nabeul,B2C Instagram,Gold,B2C,2024-01-26,True
+CUST-0166,La Marsa,B2B Pharmacy,Silver,B2B,2023-02-07,True
+CUST-0167,Ben Arous,B2C Web,Bronze,B2C,2024-03-26,True
+CUST-0168,Gafsa,B2C Web,Bronze,B2C,2023-06-08,True
+CUST-0169,Mahdia,B2B Reseller,Gold,B2B,2023-03-24,False
+CUST-0170,Kasserine,B2C Facebook,Silver,B2C,2023-11-21,True
+CUST-0171,Mahdia,B2C Instagram,Silver,B2C,2023-03-12,True
+CUST-0172,La Marsa,B2B Reseller,Gold,B2B,2024-03-20,False
+CUST-0173,Mahdia,B2C Facebook,Gold,B2C,2024-03-30,True
+CUST-0174,Bizerte,B2B Spa,Gold,B2B,2023-10-28,True
+CUST-0175,Ariana,B2C Web,Silver,B2C,2024-08-02,True
+CUST-0176,Sousse,B2C Web,Bronze,B2C,2024-01-27,True
+CUST-0177,Kairouan,B2C Instagram,Silver,B2C,2023-08-26,True
+CUST-0178,Bizerte,B2C Instagram,Silver,B2C,2024-04-21,False
+CUST-0179,La Marsa,B2C Instagram,Bronze,B2C,2023-12-20,False
+CUST-0180,Bizerte,B2C Facebook,Bronze,B2C,2023-09-14,True
+CUST-0181,Bizerte,B2C Web,Bronze,B2C,2024-05-09,True
+CUST-0182,Ariana,B2C Facebook,Silver,B2C,2023-10-30,True
+CUST-0183,Kasserine,B2C Facebook,Bronze,B2C,2024-08-02,False
+CUST-0184,Mahdia,B2B Pharmacy,Gold,B2B,2024-05-23,False
+CUST-0185,Bizerte,B2B Pharmacy,Platinum,B2B,2023-08-13,True
+CUST-0186,Ben Arous,B2C Web,Silver,B2C,2023-05-21,True
+CUST-0187,La Marsa,B2C Facebook,Bronze,B2C,2024-03-27,True
+CUST-0188,Gabès,B2B Pharmacy,Silver,B2B,2024-03-01,True
+CUST-0189,Sousse,B2B Pharmacy,Silver,B2B,2024-05-28,False
+CUST-0190,Kasserine,B2C Web,Gold,B2C,2024-05-08,False
+CUST-0191,Bizerte,B2B Pharmacy,Silver,B2B,2023-03-19,True
+CUST-0192,Kairouan,B2B Spa,Platinum,B2B,2024-07-24,True
+CUST-0193,Mahdia,B2C Instagram,Bronze,B2C,2023-05-07,True
+CUST-0194,La Marsa,B2B Pharmacy,Silver,B2B,2024-01-16,True
+CUST-0195,Kairouan,B2C Instagram,Silver,B2C,2024-07-28,True
+CUST-0196,Ben Arous,B2C Web,Bronze,B2C,2024-04-20,False
+CUST-0197,Bizerte,B2C Facebook,Bronze,B2C,2023-02-16,False
+CUST-0198,Bizerte,B2B Reseller,Silver,B2B,2024-07-04,True
+CUST-0199,Gafsa,B2C Instagram,Gold,B2C,2024-07-07,True
+CUST-0200,Nabeul,B2B Pharmacy,Gold,B2B,2024-05-16,True
+CUST-0201,Bizerte,B2C Web,Bronze,B2C,2024-03-30,True
+CUST-0202,Kairouan,B2B Spa,Gold,B2B,2024-07-11,False
+CUST-0203,La Marsa,B2C Instagram,Bronze,B2C,2023-07-14,False
+CUST-0204,Kasserine,B2B Spa,Silver,B2B,2023-01-22,True
+CUST-0205,Gabès,B2C Web,Bronze,B2C,2024-08-01,True
+CUST-0206,Kasserine,B2B Pharmacy,Silver,B2B,2023-08-27,True
+CUST-0207,Sousse,B2B Pharmacy,Silver,B2B,2023-05-29,False
+CUST-0208,Monastir,B2C Web,Bronze,B2C,2023-01-27,True
+CUST-0209,Gabès,B2B Pharmacy,Silver,B2B,2023-06-28,True
+CUST-0210,Sousse,B2B Pharmacy,Gold,B2B,2024-05-02,True
+CUST-0211,Gabès,B2C Instagram,Bronze,B2C,2024-05-30,True
+CUST-0212,Ben Arous,B2C Web,Silver,B2C,2024-06-17,True
+CUST-0213,La Marsa,B2B Reseller,Gold,B2B,2024-02-16,True
+CUST-0214,Sfax,B2C Instagram,Gold,B2C,2023-03-17,False
+CUST-0215,Gabès,B2C Facebook,Bronze,B2C,2023-10-09,True
+CUST-0216,Ben Arous,B2C Instagram,Bronze,B2C,2024-06-27,True
+CUST-0217,Monastir,B2C Facebook,Bronze,B2C,2023-04-28,False
+CUST-0218,La Marsa,B2B Spa,Platinum,B2B,2024-03-16,True
+CUST-0219,Kairouan,B2C Instagram,Gold,B2C,2024-02-13,True
+CUST-0220,Sfax,B2C Web,Bronze,B2C,2023-09-19,True
+CUST-0221,Sousse,B2C Facebook,Bronze,B2C,2023-04-04,False
+CUST-0222,Sfax,B2C Instagram,Silver,B2C,2024-01-17,False
+CUST-0223,Monastir,B2C Web,Platinum,B2C,2024-07-29,True
+CUST-0224,Sfax,B2C Instagram,Gold,B2C,2024-03-09,False
+CUST-0225,Nabeul,B2C Web,Bronze,B2C,2023-11-16,True
+CUST-0226,Ben Arous,B2C Instagram,Bronze,B2C,2024-05-08,True
+CUST-0227,Sfax,B2C Instagram,Silver,B2C,2023-04-28,False
+CUST-0228,Ben Arous,B2C Web,Bronze,B2C,2024-07-28,False
+CUST-0229,Kasserine,B2C Facebook,Silver,B2C,2024-07-24,True
+CUST-0230,La Marsa,B2B Spa,Silver,B2B,2023-11-13,False
+CUST-0231,Gabès,B2C Web,Gold,B2C,2024-08-02,True
+CUST-0232,Sfax,B2C Web,Silver,B2C,2023-02-01,True
+CUST-0233,Monastir,B2C Web,Bronze,B2C,2023-12-16,True
+CUST-0234,Bizerte,B2B Pharmacy,Gold,B2B,2023-03-28,False
+CUST-0235,Sousse,B2C Web,Silver,B2C,2023-03-25,True
+CUST-0236,La Marsa,B2C Instagram,Silver,B2C,2024-02-29,True
+CUST-0237,Mahdia,B2C Instagram,Bronze,B2C,2023-04-24,True
+CUST-0238,La Marsa,B2C Facebook,Silver,B2C,2023-11-12,True
+CUST-0239,Ariana,B2B Reseller,Silver,B2B,2023-08-05,False
+CUST-0240,Mahdia,B2C Web,Bronze,B2C,2023-01-08,True
+CUST-0241,Ariana,B2C Web,Bronze,B2C,2023-08-24,True
+CUST-0242,Kasserine,B2C Facebook,Bronze,B2C,2024-02-11,False
+CUST-0243,Tunis,B2C Instagram,Bronze,B2C,2023-03-21,False
+CUST-0244,Ben Arous,B2C Instagram,Bronze,B2C,2024-03-03,True
+CUST-0245,Ariana,B2C Web,Bronze,B2C,2024-04-16,False
+CUST-0246,Gabès,B2C Web,Gold,B2C,2023-09-07,True
+CUST-0247,Ariana,B2C Instagram,Bronze,B2C,2023-11-14,True
+CUST-0248,Kairouan,B2C Web,Bronze,B2C,2024-06-06,True
+CUST-0249,Monastir,B2C Instagram,Gold,B2C,2023-12-24,True
+CUST-0250,Kasserine,B2C Facebook,Bronze,B2C,2023-04-16,True
+CUST-0251,Kairouan,B2C Web,Bronze,B2C,2023-03-19,True
+CUST-0252,Mahdia,B2C Facebook,Bronze,B2C,2024-07-31,False
+CUST-0253,Gafsa,B2C Facebook,Gold,B2C,2023-11-27,False
+CUST-0254,La Marsa,B2C Web,Bronze,B2C,2024-04-25,True
+CUST-0255,Bizerte,B2B Pharmacy,Silver,B2B,2023-03-17,True
+CUST-0256,Gafsa,B2C Web,Bronze,B2C,2023-10-21,True
+CUST-0257,Kasserine,B2B Reseller,Gold,B2B,2024-01-29,True
+CUST-0258,Monastir,B2B Reseller,Bronze,B2B,2024-08-08,True
+CUST-0259,Gabès,B2C Facebook,Silver,B2C,2023-03-05,True
+CUST-0260,Mahdia,B2B Spa,Gold,B2B,2024-05-31,True
+CUST-0261,Tunis,B2C Web,Bronze,B2C,2024-03-25,True
+CUST-0262,Ben Arous,B2C Web,Bronze,B2C,2023-10-17,True
+CUST-0263,Mahdia,B2C Web,Silver,B2C,2023-12-09,True
+CUST-0264,Sfax,B2C Facebook,Bronze,B2C,2023-09-16,True
+CUST-0265,La Marsa,B2B Reseller,Silver,B2B,2023-03-25,True
+CUST-0266,Sousse,B2B Spa,Gold,B2B,2024-02-06,True
+CUST-0267,Nabeul,B2B Reseller,Silver,B2B,2023-12-03,False
+CUST-0268,La Marsa,B2B Pharmacy,Platinum,B2B,2024-06-23,True
+CUST-0269,La Marsa,B2C Instagram,Bronze,B2C,2024-01-07,True
+CUST-0270,Kairouan,B2C Web,Silver,B2C,2023-07-16,True
+CUST-0271,Sousse,B2C Web,Bronze,B2C,2023-04-14,True
+CUST-0272,Monastir,B2B Spa,Bronze,B2B,2023-12-11,False
+CUST-0273,Ben Arous,B2C Web,Bronze,B2C,2023-06-16,True
+CUST-0274,Nabeul,B2B Pharmacy,Silver,B2B,2024-03-24,True
+CUST-0275,Gabès,B2C Facebook,Bronze,B2C,2024-03-30,True
+CUST-0276,Mahdia,B2B Pharmacy,Gold,B2B,2023-11-13,False
+CUST-0277,Mahdia,B2C Instagram,Gold,B2C,2024-01-12,True
+CUST-0278,Ben Arous,B2B Reseller,Silver,B2B,2024-01-27,True
+CUST-0279,Ariana,B2B Reseller,Platinum,B2B,2023-05-22,False
+CUST-0280,Tunis,B2C Facebook,Gold,B2C,2024-07-21,False
+CUST-0281,Nabeul,B2B Spa,Silver,B2B,2023-06-14,True
+CUST-0282,Monastir,B2C Web,Bronze,B2C,2023-08-16,False
+CUST-0283,Gabès,B2B Reseller,Silver,B2B,2024-01-18,True
+CUST-0284,Sfax,B2C Instagram,Bronze,B2C,2023-04-12,False
+CUST-0285,La Marsa,B2C Web,Bronze,B2C,2023-02-09,True
+CUST-0286,Kasserine,B2C Instagram,Gold,B2C,2024-04-25,True
+CUST-0287,Tunis,B2B Spa,Silver,B2B,2023-06-03,True
+CUST-0288,Nabeul,B2C Facebook,Bronze,B2C,2023-10-23,True
+CUST-0289,Sfax,B2C Web,Bronze,B2C,2024-04-13,True
+CUST-0290,Kasserine,B2B Spa,Bronze,B2B,2024-06-11,True
+CUST-0291,Nabeul,B2C Web,Bronze,B2C,2023-12-28,True
+CUST-0292,Ariana,B2C Web,Silver,B2C,2024-06-20,False
+CUST-0293,Sfax,B2B Reseller,Gold,B2B,2024-06-03,True
+CUST-0294,Ariana,B2B Spa,Silver,B2B,2024-01-18,True
+CUST-0295,Tunis,B2C Instagram,Bronze,B2C,2023-09-04,True
+CUST-0296,La Marsa,B2C Web,Silver,B2C,2023-12-07,True
+CUST-0297,Gabès,B2C Instagram,Gold,B2C,2023-06-29,False
+CUST-0298,La Marsa,B2C Instagram,Silver,B2C,2023-07-06,False
+CUST-0299,Sfax,B2B Pharmacy,Bronze,B2B,2023-07-26,True
+CUST-0300,Kairouan,B2B Spa,Silver,B2B,2024-02-12,False
+CUST-0301,Monastir,B2C Instagram,Bronze,B2C,2023-07-15,True
+CUST-0302,Kasserine,B2B Pharmacy,Silver,B2B,2023-05-08,False
+CUST-0303,Ariana,B2B Spa,Platinum,B2B,2024-01-31,True
+CUST-0304,Sousse,B2C Instagram,Bronze,B2C,2024-06-15,True
+CUST-0305,Sfax,B2B Pharmacy,Gold,B2B,2023-07-04,True
+CUST-0306,Gabès,B2C Web,Bronze,B2C,2023-10-30,True
+CUST-0307,Ben Arous,B2B Pharmacy,Gold,B2B,2024-04-02,True
+CUST-0308,Kasserine,B2B Spa,Gold,B2B,2023-02-28,True
+CUST-0309,La Marsa,B2C Instagram,Silver,B2C,2023-06-13,False
+CUST-0310,Sousse,B2B Spa,Gold,B2B,2023-05-10,True
+CUST-0311,Mahdia,B2C Facebook,Bronze,B2C,2024-08-03,True
+CUST-0312,Sousse,B2C Facebook,Gold,B2C,2024-01-16,True
+CUST-0313,Sfax,B2C Facebook,Silver,B2C,2024-02-12,True
+CUST-0314,Bizerte,B2C Web,Bronze,B2C,2023-07-10,True
+CUST-0315,Ariana,B2B Spa,Gold,B2B,2024-04-01,True
+CUST-0316,Ben Arous,B2C Web,Gold,B2C,2024-05-17,True
+CUST-0317,Sousse,B2B Spa,Platinum,B2B,2024-03-31,False
+CUST-0318,Mahdia,B2C Facebook,Gold,B2C,2023-11-24,True
+CUST-0319,Nabeul,B2C Web,Silver,B2C,2023-11-04,False
+CUST-0320,Nabeul,B2B Pharmacy,Silver,B2B,2024-01-06,True
+CUST-0321,Sfax,B2B Reseller,Silver,B2B,2024-05-20,True
+CUST-0322,Monastir,B2C Facebook,Bronze,B2C,2024-07-18,True
+CUST-0323,Sfax,B2C Web,Bronze,B2C,2024-05-05,True
+CUST-0324,Mahdia,B2C Instagram,Silver,B2C,2023-05-09,False
+CUST-0325,La Marsa,B2C Web,Bronze,B2C,2024-06-13,True
+CUST-0326,Kasserine,B2B Pharmacy,Silver,B2B,2023-05-13,True
+CUST-0327,Kasserine,B2C Web,Bronze,B2C,2023-06-06,True
+CUST-0328,Sousse,B2C Web,Silver,B2C,2023-12-21,False
+CUST-0329,Monastir,B2B Spa,Silver,B2B,2024-07-18,True
+CUST-0330,La Marsa,B2C Web,Silver,B2C,2024-05-29,True
+CUST-0331,Ben Arous,B2B Reseller,Gold,B2B,2023-12-12,False
+CUST-0332,Ben Arous,B2C Web,Gold,B2C,2023-03-25,True
+CUST-0333,La Marsa,B2B Pharmacy,Silver,B2B,2024-08-08,True
+CUST-0334,La Marsa,B2C Web,Gold,B2C,2024-07-12,True
+CUST-0335,Bizerte,B2C Instagram,Gold,B2C,2024-02-20,True
+CUST-0336,Sfax,B2C Facebook,Bronze,B2C,2024-03-01,True
+CUST-0337,Kairouan,B2C Web,Bronze,B2C,2023-11-23,True
+CUST-0338,Kasserine,B2C Web,Bronze,B2C,2024-01-15,True
+CUST-0339,Sfax,B2C Web,Bronze,B2C,2023-10-01,True
+CUST-0340,Sousse,B2C Web,Bronze,B2C,2024-01-29,False
+CUST-0341,Ariana,B2C Web,Gold,B2C,2023-06-13,False
+CUST-0342,Ben Arous,B2B Pharmacy,Silver,B2B,2024-06-11,True
+CUST-0343,Bizerte,B2C Instagram,Bronze,B2C,2024-02-07,True
+CUST-0344,Kairouan,B2C Web,Bronze,B2C,2023-02-21,True
+CUST-0345,Ben Arous,B2B Spa,Gold,B2B,2024-07-03,True
+CUST-0346,Sfax,B2C Instagram,Gold,B2C,2024-01-10,False
+CUST-0347,Gabès,B2C Web,Bronze,B2C,2024-07-29,True
+CUST-0348,Monastir,B2C Web,Bronze,B2C,2024-04-06,False
+CUST-0349,Bizerte,B2B Spa,Gold,B2B,2023-05-12,False
+CUST-0350,Ariana,B2C Instagram,Platinum,B2C,2024-07-25,False
+CUST-0351,Mahdia,B2C Web,Silver,B2C,2024-02-16,True
+CUST-0352,Tunis,B2C Web,Silver,B2C,2024-04-30,True
+CUST-0353,Sousse,B2C Facebook,Silver,B2C,2023-12-02,False
+CUST-0354,Gabès,B2C Web,Platinum,B2C,2023-11-03,True
+CUST-0355,Monastir,B2B Spa,Gold,B2B,2023-11-03,True
+CUST-0356,Tunis,B2C Instagram,Silver,B2C,2024-03-02,True
+CUST-0357,Mahdia,B2B Spa,Gold,B2B,2024-04-30,True
+CUST-0358,La Marsa,B2B Pharmacy,Gold,B2B,2023-02-22,True
+CUST-0359,Sousse,B2C Instagram,Silver,B2C,2024-01-25,True
+CUST-0360,La Marsa,B2C Web,Silver,B2C,2023-04-23,True
+CUST-0361,Gafsa,B2C Web,Bronze,B2C,2023-07-28,True
+CUST-0362,Mahdia,B2C Facebook,Bronze,B2C,2023-03-05,True
+CUST-0363,Monastir,B2C Web,Bronze,B2C,2024-05-04,True
+CUST-0364,Gabès,B2B Reseller,Gold,B2B,2024-07-13,True
+CUST-0365,Mahdia,B2B Spa,Platinum,B2B,2023-09-28,True
+CUST-0366,Kairouan,B2B Reseller,Silver,B2B,2023-11-01,False
+CUST-0367,Nabeul,B2C Web,Silver,B2C,2023-11-21,True
+CUST-0368,Monastir,B2B Reseller,Silver,B2B,2023-05-05,True
+CUST-0369,Monastir,B2C Instagram,Platinum,B2C,2023-12-20,False
+CUST-0370,Mahdia,B2C Web,Bronze,B2C,2023-03-22,True
+CUST-0371,Gafsa,B2C Facebook,Silver,B2C,2023-08-08,True
+CUST-0372,Monastir,B2C Web,Silver,B2C,2023-10-06,True
+CUST-0373,Ben Arous,B2B Pharmacy,Bronze,B2B,2024-06-27,True
+CUST-0374,Kairouan,B2C Web,Bronze,B2C,2024-04-28,True
+CUST-0375,Mahdia,B2C Web,Platinum,B2C,2023-06-11,True
+CUST-0376,Gafsa,B2C Instagram,Bronze,B2C,2023-10-22,True
+CUST-0377,La Marsa,B2C Web,Silver,B2C,2024-08-10,True
+CUST-0378,Nabeul,B2B Pharmacy,Platinum,B2B,2023-06-29,True
+CUST-0379,Kasserine,B2C Web,Gold,B2C,2024-02-11,False
+CUST-0380,Sousse,B2B Reseller,Platinum,B2B,2023-02-08,True
+CUST-0381,Ben Arous,B2C Facebook,Gold,B2C,2023-12-10,True
+CUST-0382,La Marsa,B2C Instagram,Bronze,B2C,2023-05-18,False
+CUST-0383,Gafsa,B2C Web,Gold,B2C,2023-12-05,True
+CUST-0384,Gafsa,B2C Facebook,Silver,B2C,2023-01-15,True
+CUST-0385,Mahdia,B2C Web,Silver,B2C,2023-07-17,True
+CUST-0386,Kasserine,B2C Facebook,Bronze,B2C,2024-03-13,True
+CUST-0387,Sfax,B2C Instagram,Bronze,B2C,2023-05-24,True
+CUST-0388,Kairouan,B2C Web,Bronze,B2C,2024-04-02,False
+CUST-0389,Gabès,B2C Web,Silver,B2C,2023-01-12,True
+CUST-0390,Gabès,B2C Facebook,Bronze,B2C,2023-05-02,True
+CUST-0391,Sousse,B2C Instagram,Silver,B2C,2023-11-15,True
+CUST-0392,La Marsa,B2B Spa,Gold,B2B,2023-08-13,False
+CUST-0393,Gafsa,B2C Web,Silver,B2C,2024-01-18,True
+CUST-0394,Monastir,B2B Spa,Platinum,B2B,2023-08-12,False
+CUST-0395,La Marsa,B2B Pharmacy,Bronze,B2B,2024-04-02,True
+CUST-0396,Gabès,B2C Web,Silver,B2C,2023-03-05,False
+CUST-0397,Monastir,B2C Web,Silver,B2C,2023-06-18,True
+CUST-0398,Monastir,B2C Instagram,Silver,B2C,2024-08-20,True
+CUST-0399,Monastir,B2C Instagram,Bronze,B2C,2023-05-16,True
+CUST-0400,Gafsa,B2C Facebook,Silver,B2C,2023-11-12,True
+CUST-0401,Ariana,B2C Web,Bronze,B2C,2023-08-12,True
+CUST-0402,Tunis,B2C Instagram,Silver,B2C,2024-07-08,False
+CUST-0403,Sfax,B2B Reseller,Silver,B2B,2023-07-04,False
+CUST-0404,Mahdia,B2C Facebook,Silver,B2C,2024-03-06,True
+CUST-0405,Ariana,B2C Instagram,Gold,B2C,2024-01-22,True
+CUST-0406,La Marsa,B2B Reseller,Silver,B2B,2023-12-23,True
+CUST-0407,Monastir,B2C Instagram,Bronze,B2C,2023-08-17,False
+CUST-0408,Mahdia,B2C Web,Bronze,B2C,2024-07-11,True
+CUST-0409,Ariana,B2B Spa,Silver,B2B,2023-10-10,True
+CUST-0410,Nabeul,B2B Pharmacy,Gold,B2B,2023-01-17,True
+CUST-0411,Sfax,B2C Web,Bronze,B2C,2023-02-19,True
+CUST-0412,Tunis,B2C Instagram,Bronze,B2C,2023-08-11,False
+CUST-0413,Mahdia,B2C Web,Silver,B2C,2023-10-24,True
+CUST-0414,Nabeul,B2C Facebook,Silver,B2C,2023-11-25,True
+CUST-0415,Sousse,B2B Reseller,Gold,B2B,2023-10-09,True
+CUST-0416,Ben Arous,B2B Spa,Gold,B2B,2024-03-13,True
+CUST-0417,Tunis,B2B Reseller,Gold,B2B,2024-06-21,True
+CUST-0418,Ariana,B2C Instagram,Bronze,B2C,2023-07-08,False
+CUST-0419,Gafsa,B2C Web,Bronze,B2C,2023-05-28,False
+CUST-0420,Tunis,B2C Facebook,Platinum,B2C,2024-07-24,True
+CUST-0421,Ariana,B2C Web,Bronze,B2C,2023-03-22,False
+CUST-0422,Kasserine,B2C Instagram,Silver,B2C,2023-07-15,True
+CUST-0423,Ariana,B2C Facebook,Silver,B2C,2023-03-16,True
+CUST-0424,Mahdia,B2C Facebook,Silver,B2C,2023-08-11,True
+CUST-0425,Kasserine,B2B Spa,Platinum,B2B,2023-08-05,False
+CUST-0426,Nabeul,B2C Web,Platinum,B2C,2024-05-05,False
+CUST-0427,Nabeul,B2C Facebook,Bronze,B2C,2023-09-03,True
+CUST-0428,Mahdia,B2C Web,Bronze,B2C,2024-01-03,True
+CUST-0429,Gabès,B2C Instagram,Bronze,B2C,2023-04-11,False
+CUST-0430,Nabeul,B2C Instagram,Gold,B2C,2023-07-28,True
+CUST-0431,Ariana,B2C Web,Gold,B2C,2023-05-30,True
+CUST-0432,Monastir,B2B Reseller,Gold,B2B,2023-06-06,True
+CUST-0433,Kairouan,B2C Instagram,Gold,B2C,2024-05-26,True
+CUST-0434,La Marsa,B2C Web,Silver,B2C,2024-05-15,False
+CUST-0435,La Marsa,B2B Pharmacy,Gold,B2B,2023-12-27,True
+CUST-0436,Nabeul,B2C Instagram,Bronze,B2C,2024-07-09,False
+CUST-0437,Tunis,B2C Instagram,Gold,B2C,2023-03-18,False
+CUST-0438,La Marsa,B2C Web,Bronze,B2C,2023-05-21,False
+CUST-0439,Kairouan,B2C Web,Bronze,B2C,2023-08-12,True
+CUST-0440,Gabès,B2C Web,Silver,B2C,2024-05-09,True
+CUST-0441,Tunis,B2C Web,Silver,B2C,2023-01-13,True
+CUST-0442,Nabeul,B2C Web,Platinum,B2C,2023-01-18,True
+CUST-0443,Nabeul,B2C Facebook,Gold,B2C,2023-07-03,True
+CUST-0444,Sfax,B2C Instagram,Bronze,B2C,2024-06-23,True
+CUST-0445,Gabès,B2C Web,Bronze,B2C,2024-01-18,False
+CUST-0446,Gafsa,B2C Facebook,Platinum,B2C,2023-08-20,True
+CUST-0447,Kasserine,B2B Spa,Platinum,B2B,2023-02-02,True
+CUST-0448,Ariana,B2C Instagram,Bronze,B2C,2023-01-10,True
+CUST-0449,Sfax,B2C Instagram,Bronze,B2C,2023-12-06,True
+CUST-0450,Kasserine,B2B Reseller,Platinum,B2B,2023-08-24,True
+CUST-0451,Kasserine,B2C Facebook,Silver,B2C,2023-10-05,True
+CUST-0452,Sfax,B2C Facebook,Bronze,B2C,2024-07-10,True
+CUST-0453,Tunis,B2C Web,Gold,B2C,2023-01-17,False
+CUST-0454,Ben Arous,B2C Web,Gold,B2C,2024-02-12,False
+CUST-0455,Bizerte,B2C Web,Bronze,B2C,2024-02-03,True
+CUST-0456,Monastir,B2C Web,Silver,B2C,2023-05-24,False
+CUST-0457,Nabeul,B2B Pharmacy,Platinum,B2B,2023-02-24,True
+CUST-0458,Kairouan,B2B Spa,Gold,B2B,2024-02-11,False
+CUST-0459,Gabès,B2C Web,Bronze,B2C,2024-04-06,True
+CUST-0460,Gabès,B2C Facebook,Bronze,B2C,2023-07-10,True
+CUST-0461,La Marsa,B2C Instagram,Silver,B2C,2023-10-30,False
+CUST-0462,Nabeul,B2C Web,Bronze,B2C,2024-01-25,True
+CUST-0463,La Marsa,B2C Web,Bronze,B2C,2024-01-05,True
+CUST-0464,Tunis,B2B Reseller,Gold,B2B,2023-04-15,True
+CUST-0465,Sousse,B2C Instagram,Silver,B2C,2024-06-08,True
+CUST-0466,Tunis,B2C Web,Silver,B2C,2023-11-29,False
+CUST-0467,Tunis,B2C Web,Bronze,B2C,2023-03-28,True
+CUST-0468,Monastir,B2B Spa,Gold,B2B,2023-06-23,True
+CUST-0469,Sousse,B2C Web,Bronze,B2C,2024-05-19,True
+CUST-0470,Sousse,B2C Instagram,Bronze,B2C,2024-05-10,False
+CUST-0471,Gabès,B2C Web,Bronze,B2C,2024-05-22,True
+CUST-0472,Kairouan,B2C Instagram,Bronze,B2C,2023-01-07,False
+CUST-0473,Gabès,B2B Spa,Platinum,B2B,2024-03-26,True
+CUST-0474,Kasserine,B2B Spa,Gold,B2B,2023-11-04,True
+CUST-0475,Nabeul,B2C Web,Bronze,B2C,2024-02-12,False
+CUST-0476,Bizerte,B2B Pharmacy,Platinum,B2B,2023-09-06,True
+CUST-0477,Bizerte,B2B Pharmacy,Silver,B2B,2024-07-31,True
+CUST-0478,Monastir,B2C Web,Silver,B2C,2023-01-28,False
+CUST-0479,Gafsa,B2B Reseller,Gold,B2B,2023-03-12,False
+CUST-0480,Mahdia,B2B Pharmacy,Silver,B2B,2023-11-07,True
+CUST-0481,La Marsa,B2C Web,Bronze,B2C,2024-01-22,True
+CUST-0482,Ben Arous,B2C Instagram,Bronze,B2C,2024-06-02,False
+CUST-0483,Kasserine,B2C Facebook,Silver,B2C,2024-01-04,True
+CUST-0484,Mahdia,B2C Instagram,Silver,B2C,2023-03-29,True
+CUST-0485,Kairouan,B2C Facebook,Bronze,B2C,2023-02-15,True
+CUST-0486,La Marsa,B2C Facebook,Bronze,B2C,2023-12-06,False
+CUST-0487,Ariana,B2C Web,Bronze,B2C,2023-08-16,True
+CUST-0488,Monastir,B2C Facebook,Silver,B2C,2023-08-15,True
+CUST-0489,Ariana,B2C Instagram,Silver,B2C,2024-05-27,True
+CUST-0490,Tunis,B2C Instagram,Bronze,B2C,2023-03-29,True
+CUST-0491,Nabeul,B2C Web,Bronze,B2C,2024-04-11,False
+CUST-0492,Monastir,B2C Instagram,Bronze,B2C,2024-03-24,True
+CUST-0493,Gafsa,B2C Web,Bronze,B2C,2023-04-28,True
+CUST-0494,Gabès,B2C Facebook,Silver,B2C,2023-06-18,False
+CUST-0495,Nabeul,B2C Web,Bronze,B2C,2023-06-13,True
+CUST-0496,Ariana,B2B Reseller,Gold,B2B,2023-07-08,True
+CUST-0497,La Marsa,B2C Instagram,Bronze,B2C,2023-07-22,True
+CUST-0498,Ariana,B2C Instagram,Silver,B2C,2023-07-30,True
+CUST-0499,Nabeul,B2B Pharmacy,Silver,B2B,2024-07-03,True
+CUST-0500,Gabès,B2C Web,Bronze,B2C,2024-05-16,True
