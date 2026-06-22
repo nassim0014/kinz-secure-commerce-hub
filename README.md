@@ -1,8 +1,8 @@
 # KINZ Secure Commerce Hub
 
-> A production-grade, security-first e-commerce intelligence platform for **KINZ** — a 100% Tunisian natural cosmetics and vegetable oils brand. It unifies a Next.js analytics dashboard, a FastAPI backend with OWASP-aligned security middleware, and an automated ETL pipeline that turns raw Shopify-style sales data into actionable business insights.
+> A production-grade, security-first e-commerce intelligence platform for **KINZ** a 100% Tunisian natural cosmetics and vegetable oils brand. It unifies a Next.js analytics dashboard, a FastAPI backend with OWASP-aligned security middleware, and an automated ETL pipeline that turns raw Shopify-style sales data into actionable business insights.
 
-Built by **Nassim K.** — Business Analyst, Co-Founder of KINZ, SMU Alum. Current focus: applying cybersecurity discipline to web projects and data pipelines so that growth never comes at the cost of customer trust.
+Built by **Nassim K.**  Business Analyst, Co-Founder of KINZ, SMU Alum. Current focus: applying cybersecurity discipline to web projects and data pipelines so that growth never comes at the cost of customer trust.
 
 ---
 
@@ -24,7 +24,7 @@ Built by **Nassim K.** — Business Analyst, Co-Founder of KINZ, SMU Alum. Curre
 
 ## Business Value
 
-KINZ sells Tunisian vegetable oils (prickly pear seed oil, sweet almond, nigella, sesame) and a growing line of natural cosmetics. Like most D2C brands operating across web, Instagram, and a B2B pharmacy/spa network, the team was drowning in fragmented spreadsheets — Shopify exports, Instagram DM logs, pharmacy orders, manual stock counts — with no single source of truth for revenue, margin, or customer behavior.
+KINZ sells Tunisian vegetable oils (prickly pear seed oil, sweet almond, nigella, sesame) and a growing line of natural cosmetics. Like most D2C brands operating across web, Instagram, and a B2B pharmacy/spa network, the team was drowning in fragmented spreadsheets — Shopify exports, Instagram DM logs, pharmacy orders, manual stock counts with no single source of truth for revenue, margin, or customer behavior.
 
 This hub consolidates that chaos into one secure, containerized platform that delivers four concrete capabilities:
 
@@ -268,4 +268,4 @@ MIT — see [`LICENSE`](./LICENSE).
 
 ---
 
-Maintained by **Nassim K.** — built in Tunis, deployed worldwide.
+Maintained by **Nassim K.** built in Tunis, deployed worldwide.
