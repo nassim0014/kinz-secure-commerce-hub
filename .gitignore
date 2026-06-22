@@ -1,0 +1,53 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Node / Next.js ----
+node_modules/
+.next/
+out/
+build/
+dist/
+.vercel
+*.tsbuildinfo
+.npm
+
+# ---- Env / Secrets ----
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ---- Docker ----
+docker-compose.override.yml
+
+# ---- Data (only sample data is committed; raw exports ignored) ----
+data/raw/*.xlsx
+data/raw/*.db
+data/raw/*.sqlite
+*.sqlite3
