@@ -4,7 +4,6 @@ from __future__ import annotations
 import csv
 from collections import defaultdict
 from datetime import date
-from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
 
@@ -25,8 +24,8 @@ def _load_sales() -> list[dict]:
 
 @router.get("/summary", response_model=KpiSummary)
 def summary(
-    start_date: Optional[date] = Query(default=None),
-    end_date: Optional[date] = Query(default=None),
+    start_date: date | None = Query(default=None),
+    end_date: date | None = Query(default=None),
     _: dict = Depends(current_user),
 ) -> KpiSummary:
     rows = _load_sales()

@@ -1,0 +1,15 @@
+# These owners are requested for review on PRs that touch these areas.
+# Default: @nassim0014 reviews everything.
+* @nassim0014
+
+# Backend security — require maintainer review on any security-sensitive change
+src/api/security/      @nassim0014
+src/api/utils/config.py @nassim0014
+SECURITY.md            @nassim0014
+docs/threat-model.md   @nassim0014
+
+# CI/CD and infra — require maintainer review
+.github/workflows/     @nassim0014
+Dockerfile             @nassim0014
+docker-compose.yml     @nassim0014
+infrastructure/        @nassim0014

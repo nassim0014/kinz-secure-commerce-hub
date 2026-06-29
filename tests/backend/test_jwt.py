@@ -1,5 +1,4 @@
 """Unit tests for JWT issue / verify helpers."""
-import time
 
 import pytest
 
@@ -26,7 +25,7 @@ def test_verify_rejects_expired_token():
     # Issue then artificially expire by monkey-patching settings briefly
     from src.api.utils.config import settings
 
-    token = issue_token(subject="x@y.z", role="viewer")
+    issue_token(subject="x@y.z", role="viewer")
     # Force expiry check to fail by re-encoding with exp in the past
     import jwt
 

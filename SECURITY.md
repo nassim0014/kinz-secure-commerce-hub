@@ -25,17 +25,20 @@ This project implements a defense-in-depth strategy aligned with the **OWASP Top
 
 | Layer            | Control                                                                                  |
 |------------------|------------------------------------------------------------------------------------------|
-| Authentication   | JWT (HS256) with short-lived access tokens, bcrypt password hashing (12 rounds)          |
-| Authorization    | Role-based access control (`admin`, `analyst`, `viewer`) enforced per route              |
-| Transport        | HTTPS enforced in production via Vercel + Render managed certificates                    |
-| Input Validation | Pydantic v2 schemas on every FastAPI endpoint                                            |
-| Output Encoding  | React JSX auto-escaping on frontend; structured JSON responses from API                  |
-| Rate Limiting    | Per-IP token bucket (`slowapi`), 120 req/min default                                     |
-| Headers          | Strict-Transport-Security, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, CSP   |
-| Secrets          | Loaded from environment variables; `.env` is git-ignored; `gitleaks` runs in CI          |
-| Dependencies     | `pip-audit` + `npm audit` on every pull request                                          |
-| Audit Logging    | Append-only audit log of every auth event and sensitive data access                      |
-| Container        | Non-root user in Docker image; read-only filesystem where possible                       |
+| Authentication   | JWT (HS256) with short-lived access tokens; `iss`/`aud`/`jti` claims validated on every request; bcrypt password hashing (12 rounds) |
+| Authorization    | Role-based access control (`admin`, `analyst`, `viewer`) enforced per route; role allow-list checked post-decode |
+| Transport        | HTTPS enforced in production via Vercel + Render managed certificates; HSTS preload |
+| Input Validation | Pydantic v2 schemas on every FastAPI endpoint; `EmailStr` for login; `min_length`/`max_length` on passwords |
+| Output Encoding  | React JSX auto-escaping on frontend; structured JSON responses from API |
+| Rate Limiting    | Per-IP token bucket (`slowapi`), 120 req/min default; 10 req/min on `/auth/login` |
+| Headers          | HSTS, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, CSP, CORP/COEP/COOP, Referrer-Policy, Permissions-Policy |
+| Secrets          | `pydantic-settings` BaseSettings with validators; `.env` git-ignored; `gitleaks` in CI; production fails-fast on placeholder secrets |
+| Dependencies     | `pip-audit` + `npm audit` + `bandit` SAST + `trivy` container scan on every pull request; SARIF uploaded to GitHub Security tab |
+| Audit Logging    | Append-only JSONL audit log of every auth event and sensitive data access; rotates at 10 MB × 5 files; `0600` permissions |
+| Container        | Multi-stage build; non-root user (`kinz`, uid 1001); `read_only` rootfs; `cap_drop: ALL`; `no-new-privileges`; memory/CPU limits; `internal: true` backend network |
+| Production Safety| App refuses to start if `NODE_ENV=production` and any of: JWT_SECRET is placeholder, DATABASE_URL has weak password, CORS includes `*`/`localhost`, `DEMO_USER_ENABLED=true` |
+| Request Tracing  | UUID4 `X-Request-ID` on every request; bound to logging context for SIEM correlation |
+| Docs             | `/docs` and `/redoc` disabled when `NODE_ENV=production` to reduce attack surface |
 
 ## Threat Model
 
@@ -44,8 +47,18 @@ A STRIDE-based threat model for this architecture is documented in [`docs/threat
 ## Supply-Chain Security
 
 - All dependencies are pinned in `requirements.txt` (backend) and `package.json` with a `package-lock.json` (frontend).
-- The CI workflow runs `gitleaks`, `pip-audit`, and `npm audit` on every pull request.
-- Docker images are built from official Python and Node slim base images and rebuilt weekly via a scheduled workflow.
+- The CI workflow runs `gitleaks`, `pip-audit`, `npm audit`, `bandit` (SAST), and `trivy` (container image scan) on every pull request.
+- Docker images are built from official Python and Node slim base images via multi-stage builds; no compiler toolchain in the runtime image.
+- Dependabot submits weekly dependency PRs for pip, npm, GitHub Actions, and Docker base images.
+- `pre-commit` hooks (`ruff`, `bandit`, `gitleaks`, `pytest`) run locally before every commit.
+
+## CVE Remediation Log
+
+| Date       | Library         | CVE / ID                  | Action                                                                              |
+|------------|-----------------|---------------------------|-------------------------------------------------------------------------------------|
+| 2025-06-29 | python-jose     | CVE-2024-33664            | Removed library; migrated to `PyJWT` (the only JWT lib actually used).              |
+| 2025-06-29 | python-jose     | CVE-2024-33663 (JWT bomb) | Removed library.                                                                    |
+| 2025-06-29 | python-jose     | PYSEC-2025-185 (JWE DoS)  | Removed library.                                                                    |
 
 ## Contact
 

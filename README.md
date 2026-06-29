@@ -1,5 +1,14 @@
 # KINZ Secure Commerce Hub
 
+[![CI](https://github.com/nassim0014/kinz-secure-commerce-hub/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/nassim0014/kinz-secure-commerce-hub/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
+[![Node](https://img.shields.io/badge/node-20%20%7C%2022-green.svg)](https://nodejs.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://docs.astral.sh/ruff/)
+[![security: bandit](https://img.shields.io/badge/security-bandit-4A154B.svg)](https://github.com/PyCQA/bandit)
+[![container: trivy](https://img.shields.io/badge/container-trivy-1904DA.svg)](https://github.com/aquasecurity/trivy)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+
 > A production-grade, security-first e-commerce intelligence platform for **KINZ** a 100% Tunisian natural cosmetics and vegetable oils brand. It unifies a Next.js analytics dashboard, a FastAPI backend with OWASP-aligned security middleware, and an automated ETL pipeline that turns raw Shopify-style sales data into actionable business insights.
 
 Built by **Nassim K.**  Business Analyst, Co-Founder of KINZ, SMU Alum. Current focus: applying cybersecurity discipline to web projects and data pipelines so that growth never comes at the cost of customer trust.
@@ -165,30 +174,27 @@ kinz-secure-commerce-hub/
 git clone https://github.com/nassim0014/kinz-secure-commerce-hub.git
 cd kinz-secure-commerce-hub
 cp .env.example .env
+
+# Generate a strong JWT secret and set it in .env:
+python -c "import secrets; print(secrets.token_urlsafe(48))"  # → JWT_SECRET=...
+
+# Generate a real bcrypt hash for the demo user password:
+python -c "import bcrypt; print(bcrypt.hashpw(b'KINZ-demo-2025!', bcrypt.gensalt(rounds=12)).decode())"  # → DEMO_USER_PASSWORD_HASH=...
+
 docker compose up --build
 ```
 
 - Frontend dashboard: http://localhost:3000
-- Backend API + Swagger docs: http://localhost:8000/docs
-- PostgreSQL: localhost:5432
+- Backend API + Swagger docs: http://localhost:8000/docs  *(disabled when NODE_ENV=production)*
+- PostgreSQL: 127.0.0.1:5432  *(binds to localhost only — not exposed publicly)*
 
-### Local development (without Docker)
+### Demo credentials
 
-```bash
-# Backend
-cd src/api
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+| Email                    | Password          | Role  |
+|--------------------------|-------------------|-------|
+| nassim@kinzoils.com      | KINZ-demo-2025!   | admin |
 
-# Frontend
-cd src/frontend
-npm install
-npm run dev
-
-# Run ETL pipeline manually
-cd src/pipeline
-python jobs/run_etl.py
-```
+> **Production:** Set `DEMO_USER_ENABLED=false` and back auth with a real Postgres user store. The app refuses to start in production while demo mode is on.
 
 ---
 
@@ -220,16 +226,19 @@ Each insight is backed by a Matplotlib/Seaborn chart exported to `analytics/char
 
 ## Security Posture
 
-- **Authentication:** JWT HS256, 60-minute expiry, refresh flow stubbed.
+- **Authentication:** JWT HS256, 60-minute expiry, with `iss`/`aud`/`jti` claims validated on every request.
 - **Password storage:** bcrypt with 12 rounds.
-- **Authorization:** Role-based (`admin`, `analyst`, `viewer`).
-- **Rate limiting:** 120 req/min per IP via `slowapi`.
-- **HTTP headers:** HSTS, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, CSP.
-- **Audit logging:** Every auth event and sensitive data access logged to `AUDIT_LOG_PATH`.
-- **Dependency scanning:** `pip-audit` + `npm audit` + `gitleaks` in CI.
-- **Container:** Non-root user in backend Docker image.
+- **Authorization:** Role-based (`admin`, `analyst`, `viewer`); role allow-list checked post-decode.
+- **Rate limiting:** 120 req/min per IP via `slowapi`; 10 req/min on `/auth/login`.
+- **HTTP headers:** HSTS, X-Frame-Options: DENY, X-Content-Type-Options: nosniff, CSP, CORP/COEP/COOP, Referrer-Policy, Permissions-Policy.
+- **Audit logging:** Every auth event and sensitive data access logged to `AUDIT_LOG_PATH`; rotates at 10 MB × 5 files; `0600` permissions.
+- **Production safety:** App refuses to start if `JWT_SECRET` is a placeholder, `DATABASE_URL` has a weak password, `CORS_ORIGINS` includes `*`/`localhost`, or `DEMO_USER_ENABLED=true`.
+- **Request tracing:** UUID4 `X-Request-ID` on every request; bound to logging context.
+- **Docs:** `/docs` and `/redoc` disabled when `NODE_ENV=production`.
+- **Dependency scanning:** `pip-audit` + `npm audit` + `bandit` SAST + `trivy` container scan + `gitleaks` in CI; SARIF uploaded to GitHub Security tab.
+- **Container:** Multi-stage build; non-root user; `read_only` rootfs; `cap_drop: ALL`; `no-new-privileges`; `internal: true` backend network; memory/CPU limits.
 
-See [`SECURITY.md`](./SECURITY.md) and [`docs/threat-model.md`](./docs/threat-model.md) for details.
+See [`SECURITY.md`](./SECURITY.md) and [`docs/threat-model.md`](./docs/threat-model.md) for details. See [`CHANGELOG.md`](./CHANGELOG.md) for the CVE remediation log.
 
 ---
 

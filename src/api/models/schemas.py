@@ -1,10 +1,10 @@
-"""Pydantic response models for the KINZ API."""
+"""Pydantic request/response models for the KINZ API."""
 from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr, Field
 
 
 class HealthResponse(BaseModel):
@@ -52,8 +52,8 @@ class ChannelBreakdown(BaseModel):
 
 
 class LoginRequest(BaseModel):
-    email: str
-    password: str
+    email: EmailStr
+    password: str = Field(..., min_length=8, max_length=128)
 
 
 class TokenResponse(BaseModel):

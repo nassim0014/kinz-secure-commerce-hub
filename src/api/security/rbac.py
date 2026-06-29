@@ -31,6 +31,15 @@ def current_user(authorization: str | None = Header(default=None)) -> dict:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=f"Invalid token: {exc.__class__.__name__}",
             headers={"WWW-Authenticate": "Bearer"},
+        ) from exc
+    # Defense in depth: reject tokens whose role is not in the allowed set,
+    # even if the signature is valid (catches legacy tokens issued before
+    # role validation was added).
+    if claims.get("role") not in ("viewer", "analyst", "admin"):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has an invalid role claim.",
+            headers={"WWW-Authenticate": "Bearer"},
         )
     return claims
 
