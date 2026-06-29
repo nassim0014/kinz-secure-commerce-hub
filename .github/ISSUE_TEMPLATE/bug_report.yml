@@ -1,0 +1,73 @@
+name: 🐛 Bug Report
+description: Report something that is broken or behaving unexpectedly
+title: "[bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report!
+        If this is a security vulnerability, **DO NOT** use this form — see [SECURITY.md](../../security/policy) instead.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the unexpected behavior. Include the smallest reproducible example you can.
+      placeholder: "When I call GET /api/v1/products?limit=200, I get a 500 instead of a 400."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      placeholder: "I expected a 200 response with 200 products, or a 400 telling me limit must be <= 200."
+    validations:
+      required: true
+
+  - type: input
+    id: endpoint
+    attributes:
+      label: Affected endpoint / component
+      placeholder: "GET /api/v1/products, /api/v1/kpis/summary, ETL transform_sales, Dashboard.tsx"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: env
+    attributes:
+      label: Environment
+      options:
+        - Local dev (Docker compose)
+        - Local dev (no Docker)
+        - Production (Vercel + Render)
+        - CI (GitHub Actions)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: App version / commit SHA
+      placeholder: "v1.0.0 or commit abc1234"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / stack trace
+      description: Paste any relevant logs. **Redact secrets first.** Use ```backticks``` for formatting.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

@@ -36,4 +36,4 @@ def test_transform_sales_adds_year_month_and_quarter():
     out = transform_sales(df)
     assert out.iloc[0]["year_month"] == "2024-03"
     assert out.iloc[0]["quarter"].startswith("2024Q")
-    assert out.iloc[0]["is_b2b"] is False or out.iloc[0]["is_b2b"] == False
+    assert not bool(out.iloc[0]["is_b2b"])

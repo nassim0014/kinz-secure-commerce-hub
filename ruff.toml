@@ -3,7 +3,12 @@ target-version = "py311"
 
 [lint]
 select = ["E", "F", "W", "I", "B", "UP"]
-ignore = ["E501"]  # line length is enforced by formatter, not linter
+ignore = [
+    "E501",  # line length is enforced by formatter, not linter
+]
 
-[per-file-ignores]
-"tests/*" = ["B011"]
+[lint.per-file-ignores]
+"tests/*" = ["B011", "B017"]  # pytest.raises(Exception) is OK in tests
+# FastAPI uses Depends() / Query() / Header() in argument defaults by design.
+"src/api/routes/*.py" = ["B008"]
+"src/api/security/rbac.py" = ["B008"]

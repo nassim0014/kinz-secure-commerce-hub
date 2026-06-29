@@ -2,8 +2,6 @@
 from __future__ import annotations
 
 import csv
-from pathlib import Path
-from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
 
@@ -24,7 +22,7 @@ def _load_products() -> list[dict]:
 
 @router.get("", response_model=ProductList)
 def list_products(
-    category: Optional[str] = Query(default=None, description="Filter by category"),
+    category: str | None = Query(default=None, description="Filter by category"),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     _: dict = Depends(current_user),
