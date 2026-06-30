@@ -13,10 +13,8 @@ Run on schedule (production):
 """
 from __future__ import annotations
 
-import csv
 import logging
 from datetime import datetime
-from pathlib import Path
 from typing import Any
 
 import pandas as pd

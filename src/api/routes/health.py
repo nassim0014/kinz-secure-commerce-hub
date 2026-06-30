@@ -1,7 +1,7 @@
 """Health & readiness endpoints."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from fastapi import APIRouter
 
@@ -17,5 +17,5 @@ def health() -> HealthResponse:
         status="ok",
         service=settings.APP_NAME,
         version=settings.APP_VERSION,
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )

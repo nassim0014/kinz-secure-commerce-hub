@@ -30,9 +30,12 @@ Trust boundaries:
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
-| Attacker forges a JWT to impersonate an admin    | HS256 signed with `JWT_SECRET` (≥32 random bytes); short 60-min expiry; rotate on logout   |
+| Attacker forges a JWT to impersonate an admin    | HS256 signed with `JWT_SECRET` (≥32 random bytes); short 60-min expiry; `iss`/`aud`/`jti` claims validated on every request; production fails-fast on placeholder secrets |
 | Attacker reuses a stolen password                | bcrypt with 12 rounds; rate-limit login endpoint (10 attempts/min/IP)                       |
 | Attacker spoofs Vercel egress IP to call API     | API validates JWT signature only; does not trust IP allow-lists (zero trust)                |
+| Attacker presents a JWT issued by a different service | `iss` claim validated against `JWT_ISSUER` env var; mismatch → 401                     |
+| Attacker presents a JWT meant for a different audience | `aud` claim validated against `JWT_AUDIENCE` env var; mismatch → 401                   |
+| Attacker reuses a revoked JWT                    | `jti` (UUID4) claim on every token; future revocation list can be keyed on `jti`            |
 
 ### T — Tampering
 
@@ -53,10 +56,14 @@ Trust boundaries:
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
-| Error responses leak stack traces                 | FastAPI global exception handler returns generic message; full trace only in server logs    |
+| Error responses leak stack traces                 | FastAPI global exception handler returns generic message + `request_id`; full trace only in server logs |
 | PII exposed in API responses                      | Pydantic response models explicitly list fields; no `dict` returns                          |
 | Tokens logged in plaintext                        | Structured logger redacts `Authorization` headers before write                              |
 | Customer data in screenshots                      | Sample dataset is synthetic; production dashboards use role-gated views                     |
+| Side-channel attack (Spectre-class)               | `Cross-Origin-Resource-Policy: same-origin`, `Cross-Origin-Opener-Policy: same-origin`, `Cross-Origin-Embedder-Policy: require-corp` on every response |
+| Interactive docs leak schema to attackers         | `/docs` and `/redoc` disabled when `NODE_ENV=production`                                    |
+| Audit log grows unbounded, filling disk           | Rotating audit logger: 10 MB × 5 files by default; configurable via `AUDIT_LOG_MAX_BYTES` / `AUDIT_LOG_BACKUP_COUNT` |
+| Audit log world-readable on shared host           | Log file created with mode `0600`; parent dir `0700`                                        |
 
 ### D — Denial of Service
 
@@ -72,7 +79,10 @@ Trust boundaries:
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
 | Regular user calls admin-only endpoint            | `require_role("admin")` dependency on every admin route; failure → 403                       |
 | JWT claim `role` is tampered to "admin"           | Signature check on every request rejects tampered tokens                                    |
-| Container escape from API pod                     | Backend Docker image runs as non-root user `kinz`; filesystem read-only where possible      |
+| JWT has a role outside the allowed set            | Post-decode allow-list check rejects tokens with `role` not in {viewer, analyst, admin}     |
+| Container escape from API pod                     | Backend Docker image runs as non-root user `kinz`; `read_only` rootfs; `cap_drop: ALL`; `no-new-privileges`; `internal: true` backend network |
+| Privilege escalation via malicious dependency      | `pip-audit` + `npm audit` + `bandit` SAST + `trivy` image scan in CI; SARIF uploaded to GitHub Security tab |
+| Misconfigured production deploy                   | `enforce_production_safety()` refuses to start if JWT_SECRET is placeholder, DATABASE_URL has weak password, CORS includes wildcard/localhost, or DEMO_USER_ENABLED=true |
 
 ## 3. Residual Risks
 
@@ -90,4 +100,4 @@ This threat model is reviewed:
 - Quarterly as part of the security review.
 - After any security incident, real or simulated.
 
-Last review: **2025-06-22** — Nassim K.
+Last review: **2025-06-29** — Nassim K. (post production-readiness hardening pass)

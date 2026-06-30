@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import csv
 from datetime import date
-from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
@@ -23,10 +22,10 @@ def _load_sales() -> list[dict]:
 
 @router.get("")
 def list_sales(
-    channel: Optional[str] = Query(default=None),
-    category: Optional[str] = Query(default=None),
-    start_date: Optional[date] = Query(default=None),
-    end_date: Optional[date] = Query(default=None),
+    channel: str | None = Query(default=None),
+    category: str | None = Query(default=None),
+    start_date: date | None = Query(default=None),
+    end_date: date | None = Query(default=None),
     limit: int = Query(default=100, ge=1, le=1000),
     offset: int = Query(default=0, ge=0),
     _: dict = Depends(current_user),
