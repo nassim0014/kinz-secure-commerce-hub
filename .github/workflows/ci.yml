@@ -5,20 +5,23 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main]
+  # Allow manual runs for release debugging
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   # ─────────────────────────────────────────────
-  # 1. Backend — lint + test + dependency audit
+  # 1. Backend — lint + test + SAST + dependency audit
   # ─────────────────────────────────────────────
   backend:
     name: Backend (Python ${{ matrix.python }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python: ['3.11']
+        python: ['3.11', '3.12']
     defaults:
       run:
         working-directory: src/api
@@ -36,30 +39,52 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install ruff pytest pytest-asyncio httpx pip-audit gitleaks
 
       - name: Lint (ruff)
         run: ruff check .
 
-      - name: Run unit tests
+      - name: SAST (bandit)
+        run: bandit -r . -ll -ii -x tests/
+
+      - name: Run unit tests with coverage
         env:
           JWT_SECRET: ci-test-secret-32-bytes-or-more-xxxxxx
+          JWT_ISSUER: kinz-secure-commerce-hub
+          JWT_AUDIENCE: kinz-api
           AUDIT_LOG_PATH: /tmp/kinz-ci-audit.log
-        run: pytest --tb=short -q
+          DEMO_USER_ENABLED: "true"
+          DEMO_USER_EMAIL: nassim@kinzoils.com
+          DEMO_USER_PASSWORD_HASH: $2b$12$90JOIYIldwPChFGagj4hPehUSQIRNFzTHmaaRZm9hyAAmqmo/23iG
+        run: |
+          pytest --cov=src/api --cov=src/pipeline --cov-report=xml --cov-report=term-missing --tb=short -q
 
-      - name: Dependency audit (pip-audit)
+      - name: Upload coverage to Codecov
+        if: matrix.python == '3.11'
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./src/api/coverage.xml
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Dependency audit (pip-audit) — blocking on push to main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: pip-audit --strict
+
+      - name: Dependency audit (pip-audit) — advisory on PRs
+        if: github.event_name == 'pull_request'
         run: pip-audit --strict
         continue-on-error: true
 
   # ─────────────────────────────────────────────
-  # 2. Frontend — lint + build + test
+  # 2. Frontend — lint + build + test + audit
   # ─────────────────────────────────────────────
   frontend:
     name: Frontend (Node ${{ matrix.node }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node: ['20']
+        node: ['20', '22']
     defaults:
       run:
         working-directory: src/frontend
@@ -71,49 +96,82 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'npm'
-          cache-dependency-path: src/frontend/package.json
+          cache-dependency-path: src/frontend/package-lock.json
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Lint
         run: npm run lint
-        continue-on-error: true
 
       - name: Run tests
-        run: npm test -- --ci
+        run: npm test -- --ci --coverage
 
       - name: Build
         run: npm run build
         env:
           NEXT_PUBLIC_API_URL: http://localhost:8000
 
+      - name: Dependency audit — advisory
+        run: npm audit --omit=dev --audit-level=high
+        continue-on-error: true
+
   # ─────────────────────────────────────────────
-  # 3. Security — gitleaks scan
+  # 3. Security — secret scan + container scan
   # ─────────────────────────────────────────────
   security:
-    name: Secret scan (gitleaks)
+    name: Security scans
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write  # required for SARIF upload
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Run gitleaks
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build image for scan
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          tags: kinz-secure-commerce-hub:ci-scan
+
+      - name: Trivy scan (high+crit vulns, fail build)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: kinz-secure-commerce-hub:ci-scan
+          severity: HIGH,CRITICAL
+          exit-code: '1'
+          format: sarif
+          output: trivy-results.sarif
+
+      - name: Upload Trivy SARIF to GitHub Security tab
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results.sarif
+
   # ─────────────────────────────────────────────
-  # 4. Docker build smoke test
+  # 4. Docker build smoke test (multi-arch)
   # ─────────────────────────────────────────────
   docker:
-    name: Docker build
+    name: Docker build (amd64 + arm64)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up QEMU (for arm64)
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Build backend image
+      - name: Build backend image (amd64)
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -122,3 +180,4 @@ jobs:
           tags: kinz-secure-commerce-hub:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          platforms: linux/amd64

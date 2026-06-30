@@ -1,0 +1,74 @@
+# Git
+.git
+.gitignore
+.gitattributes
+.github
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+env/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+dist/
+.vercel
+*.tsbuildinfo
+.npm
+src/frontend/node_modules/
+src/frontend/.next/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Docker
+docker-compose.override.yml
+Dockerfile
+.dockerignore
+
+# Docs / non-runtime
+docs/
+analytics/
+README.md
+SECURITY.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+LICENSE
+*.md
+!src/api/README.md
+
+# CI / tooling
+ruff.toml
+pytest.ini
+.pre-commit-config.yaml

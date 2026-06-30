@@ -1,0 +1,52 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement
+title: "[feat] "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Who is the user, what are they trying to do, and what's hard today?
+      placeholder: "As a KINZ analyst, I want to filter KPIs by B2B vs B2C so I can compare channel profitability without exporting to Excel."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the change you'd like to see. Mockups / API sketches welcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other ways could this be solved? Why is the proposed one better?
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Backend API (FastAPI)
+        - Frontend (Next.js dashboard)
+        - ETL pipeline
+        - Security
+        - DevOps / CI / Docker
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

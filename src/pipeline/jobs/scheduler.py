@@ -8,7 +8,6 @@ worker. For local dev, run it as a script:
 from __future__ import annotations
 
 import logging
-import os
 import signal
 
 from apscheduler.schedulers.blocking import BlockingScheduler
