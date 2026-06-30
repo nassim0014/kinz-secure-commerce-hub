@@ -9,7 +9,7 @@
 # ────────────────────────────────────────────────────────────
 # Stage 1: builder — install deps into a venv
 # ────────────────────────────────────────────────────────────
-FROM python:3.11-slim AS builder
+FROM python:3.14-slim AS builder
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -32,7 +32,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # ────────────────────────────────────────────────────────────
 # Stage 2: runtime — minimal image, no compiler toolchain
 # ────────────────────────────────────────────────────────────
-FROM python:3.11-slim AS runtime
+FROM python:3.14-slim AS runtime
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
