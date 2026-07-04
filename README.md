@@ -11,7 +11,7 @@
 
 > A production-grade, security-first e-commerce intelligence platform for **KINZ** a 100% Tunisian natural cosmetics and vegetable oils brand. It unifies a Next.js analytics dashboard, a FastAPI backend with OWASP-aligned security middleware, and an automated ETL pipeline that turns raw Shopify-style sales data into actionable business insights.
 
-Built by **Nassim K.**  Business Analyst, Co-Founder of KINZ, SMU Alum. Current focus: applying cybersecurity discipline to web projects and data pipelines so that growth never comes at the cost of customer trust.
+Built by **Nassim K.** 
 
 ---
 
