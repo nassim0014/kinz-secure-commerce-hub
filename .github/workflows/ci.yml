@@ -47,6 +47,11 @@ jobs:
         run: bandit -r . -ll -ii -x tests/
 
       - name: Run unit tests with coverage
+        # Run from the repo root, NOT src/api. pytest.ini sets `testpaths = tests`
+        # and the tests import `from src.api...`, both of which only resolve from
+        # the root. Under the job's `working-directory: src/api` pytest collected
+        # zero tests and exited 5, which is why this job had been red since July.
+        working-directory: ${{ github.workspace }}
         env:
           JWT_SECRET: ci-test-secret-32-bytes-or-more-xxxxxx
           JWT_ISSUER: kinz-secure-commerce-hub
@@ -62,7 +67,7 @@ jobs:
         if: matrix.python == '3.11'
         uses: codecov/codecov-action@v4
         with:
-          files: ./src/api/coverage.xml
+          files: ./coverage.xml
           fail_ci_if_error: false
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -170,7 +175,7 @@ jobs:
       - name: Set up QEMU (for arm64)
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       - name: Build backend image (amd64)
         uses: docker/build-push-action@v5
         with:
