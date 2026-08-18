@@ -10,7 +10,7 @@ psycopg[binary]==3.1.18
 #        CVE-2024-33663 JWT-bomb DoS, PYSEC-2025-185 JWE DoS).
 #        PyJWT is the maintained, CVE-free alternative and is what
 #        the codebase actually uses.
-PyJWT==2.8.0
+PyJWT==2.13.0
 bcrypt==4.1.2
 slowapi==0.1.9
 python-multipart==0.0.9
