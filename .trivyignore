@@ -1,0 +1,30 @@
+# Trivy exceptions — each entry must state WHY it cannot be acted on, and will
+# stop being needed the moment that changes. This is not a place to silence
+# findings that are merely inconvenient.
+#
+# Both entries below are vendored INSIDE pip itself (pip/_vendor/vendor.txt).
+# They are not installed as independent packages and cannot be upgraded
+# separately — `pip install --upgrade msgpack setuptools` has no effect on
+# them. The image already ships setuptools 84.0.0 and msgpack 1.2.1 as real
+# packages; these are pip's private bundled copies.
+#
+# The only fix is a pip release that vendors newer versions. The image already
+# pins pip>=26.1.2 and resolves to 26.2.1, the newest available. Re-check when
+# pip next revendors and delete these lines.
+#
+# Verified 2026-08-18: docker run kscb:fixed cat \
+#   /opt/venv/lib/python3.11/site-packages/pip/_vendor/vendor.txt
+#     msgpack==1.1.2
+#     setuptools==70.3.0
+
+# msgpack 1.1.2 vendored in pip 26.2.1 (real msgpack package is 1.2.1)
+GHSA-6v7p-g79w-8964
+
+# setuptools 70.3.0 vendored in pip 26.2.1 (real setuptools package is 84.0.0)
+CVE-2025-47273
+
+# Same vendored setuptools 70.3.0, MEDIUM severity. Listed because the action
+# builds the SARIF report with ALL severities regardless of the `severity:`
+# input, so exit-code sees this one too — the severity filter does not apply on
+# the SARIF path.
+CVE-2026-59890
