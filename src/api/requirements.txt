@@ -5,7 +5,7 @@ pydantic==2.6.4
 pydantic-settings==2.2.1
 email-validator==2.1.1
 sqlalchemy==2.0.29
-psycopg[binary]==3.1.18
+psycopg[binary]==3.3.4
 # NOTE: python-jose removed (CVE-2024-33664 algorithm confusion,
 #        CVE-2024-33663 JWT-bomb DoS, PYSEC-2025-185 JWE DoS).
 #        PyJWT is the maintained, CVE-free alternative and is what
