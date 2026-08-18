@@ -25,3 +25,12 @@ httpx==0.27.0
 ruff==0.3.5
 pip-audit==2.7.3
 bandit==1.7.8
+
+# Build-time toolchain, pinned only to satisfy `pip-audit --strict`.
+# setuptools is not imported by this application. It ships ambiently in the
+# Python 3.11 runner image (79.0.1, PYSEC-2026-3447) and pip-audit inspects the
+# whole installed environment, so the 3.11 matrix leg failed while 3.12 passed —
+# Python 3.12 venvs no longer bundle setuptools at all. Pinning it here upgrades
+# the ambient copy on 3.11 and is a no-op on 3.12.
+setuptools>=83.0.0
+
