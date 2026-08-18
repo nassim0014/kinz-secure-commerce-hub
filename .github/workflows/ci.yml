@@ -166,6 +166,10 @@ jobs:
           # build, and unfixable ones still reach the Security tab via the
           # SARIF upload below.
           ignore-unfixed: true
+          # The action does NOT auto-discover .trivyignore at the repo root —
+          # it passes its own INPUT_TRIVYIGNORES through, and leaving this blank
+          # silently ignores the file. Verified from the job env in a real run.
+          trivyignores: .trivyignore
           exit-code: '1'
           format: sarif
           output: trivy-results.sarif
