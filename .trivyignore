@@ -22,3 +22,9 @@ GHSA-6v7p-g79w-8964
 
 # setuptools 70.3.0 vendored in pip 26.2.1 (real setuptools package is 84.0.0)
 CVE-2025-47273
+
+# Same vendored setuptools 70.3.0, MEDIUM severity. Listed because the action
+# builds the SARIF report with ALL severities regardless of the `severity:`
+# input, so exit-code sees this one too — the severity filter does not apply on
+# the SARIF path.
+CVE-2026-59890
