@@ -17,13 +17,23 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Build deps only
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends \
         build-essential libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Create venv and install deps
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
+
+# Refresh the packaging toolchain inside the venv before installing anything.
+# The base image ships pip 24.0, setuptools 79.0.1 and wheel 0.45.1, which carry
+# HIGH-severity advisories (CVE-2026-8643, CVE-2026-59890, CVE-2026-24049) plus
+# jaraco.context 5.3.0 vendored inside setuptools (CVE-2026-23949). None are
+# imported by this application, but they ship in the image and Trivy scans the
+# image, not the import graph.
+RUN pip install --no-cache-dir --upgrade "pip>=26.1.2" "setuptools>=83.0.0" "wheel>=0.46.2"
 
 WORKDIR /build
 COPY src/api/requirements.txt ./requirements.txt
@@ -40,9 +50,12 @@ ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
 # Runtime deps only (no build-essential)
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends \
         libpq5 curl \
     && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade "pip>=26.1.2" "setuptools>=83.0.0" "wheel>=0.46.2" \
     && groupadd --gid 1001 kinz \
     && useradd  --uid 1001 --gid kinz --create-home --shell /bin/bash kinz
 
