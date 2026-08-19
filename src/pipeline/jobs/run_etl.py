@@ -57,7 +57,7 @@ def transform_products(df: pd.DataFrame) -> pd.DataFrame:
 
     # Drop rows where critical numerics failed to parse
     before = len(df)
-    df = df.dropna(subset=["price_tnd", "cost_tnd"])
+    df = df.dropna(subset=["price_tnd", "cost_tnd"]).copy()
     if len(df) < before:
         logger.warning("Dropped %d product rows with invalid numerics", before - len(df))
 
@@ -75,7 +75,7 @@ def transform_sales(df: pd.DataFrame) -> pd.DataFrame:
     df["order_total_tnd"] = pd.to_numeric(df["order_total_tnd"], errors="coerce")
 
     before = len(df)
-    df = df.dropna(subset=["order_date", "line_total_tnd"])
+    df = df.dropna(subset=["order_date", "line_total_tnd"]).copy()
     if len(df) < before:
         logger.warning("Dropped %d sales rows with invalid dates/totals", before - len(df))
 
