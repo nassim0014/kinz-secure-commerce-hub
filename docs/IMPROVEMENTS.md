@@ -37,12 +37,11 @@ branch.
 ### 2. `routes/sales.py` coverage — 36% → target 100%
 33 statements, 21 uncovered. Lower priority than KPIs but same shape.
 
-### 3. `models/db.py` coverage — 0%
-38 statements, zero covered. The ORM models are imported by every route,
-so import-time errors would crash the whole API — but field-level bugs
-(silent default, wrong column type) would only surface when a specific
-query hits them. Add a test that creates, reads, updates, and deletes
-each model.
+### 3. ~~`models/db.py` coverage — 0%~~ ✅
+13 new tests in `tests/backend/test_models.py`: CRUD on all three ORM
+models (ProductORM, CustomerORM, SaleORM) + defaults (stock_units,
+marketing_opt_in, autoincrement id) + nullability + metadata inspection
+(tables exist, column types). Uses in-memory SQLite so no DB needed.
 
 ## Next
 
