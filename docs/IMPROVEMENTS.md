@@ -51,7 +51,8 @@ rules, major runtime bumps always wait for the owner. The repo also has a
 frontend with its own Dockerfile and tailwind config — the bump needs
 manual verification that the frontend still renders correctly.
 
-### 5. No CLAUDE.md
+### 5. ~~No CLAUDE.md~~ ✅
+Added CLAUDE.md with ground rules, architecture, test commands, known traps (dependabot, SettingWithCopyWarning, security headers), and loop-engine integration.
 No project-level instructions for AI agents. Adding one would let the
 closed-loop work this repo autonomously.
 
