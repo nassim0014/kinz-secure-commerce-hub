@@ -62,6 +62,13 @@ jobs:
           DEMO_USER_PASSWORD_HASH: $2b$12$90JOIYIldwPChFGagj4hPehUSQIRNFzTHmaaRZm9hyAAmqmo/23iG
         run: |
           pytest --cov=src/api --cov=src/pipeline --cov-report=xml --cov-report=term-missing --tb=short -q
+      - name: Upload coverage to Codecov
+        if: github.event_name == "push" && github.ref == "refs/heads/main"
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload coverage to Codecov
         if: matrix.python == '3.11'
