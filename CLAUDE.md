@@ -26,7 +26,7 @@ src/
   pipeline/         ETL jobs (run_etl.py)
   frontend/         React/TypeScript frontend (Jest tests)
 tests/
-  backend/           pytest suite (67 tests)
+  backend/           pytest suite (95 tests)
   frontend/          Jest suite
 docker-compose.yml   Full stack: API + frontend + PostgreSQL
 ```
@@ -38,7 +38,7 @@ docker-compose.yml   Full stack: API + frontend + PostgreSQL
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r src/api/requirements.txt
 
-# Tests (67 tests, ~5s)
+# Tests (95 tests, ~8s)
 pytest tests/ -v
 
 # Lint
