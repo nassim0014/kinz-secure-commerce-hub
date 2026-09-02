@@ -35,12 +35,16 @@ docker compose up --build -d
 ### 6. Remaining coverage gaps — pick the highest-value one next
 Roughly ranked by real risk, not just missing-line count:
 
-- `src/api/security/rbac.py` — 68% (8/25 missed, lines 29-30, 39, 50-58).
-  Role-based access control. Untested branches in an authorization module
-  are the highest-value gap left in the codebase — an RBAC bug fails
-  silently (wrong role let through) rather than loudly. **Security-review
-  territory: read the whole file and understand every branch before
-  writing tests, don't just chase the coverage number.**
+- ~~`src/api/security/rbac.py` — 68%~~ ✅ **PR #<TBD>** — now 100%.
+  14 tests in `tests/backend/test_rbac.py` cover every branch: `current_user`'s
+  `PyJWTError` → 401 path, the "role not in {viewer,analyst,admin}"
+  defense-in-depth reject (a valid signature is not enough), bearer-scheme
+  case-insensitivity, and the `require_role` factory — its 403 branch, its
+  multi-role allow-list, and its pass-through. Each guard was mutation-tested
+  (neuter the check → the matching test fails; 7 fail under mutation, all
+  pass restored). **Discovered:** `require_role` is defined and exported but
+  **no route wires it up** — every route uses bare `current_user`. Left in
+  place (removing security scaffolding is an owner call) — see item 7.
 - `src/pipeline/jobs/scheduler.py` — 0% (24/24 missed). APScheduler
   wrapper; untested but also never exercised by anything except the live
   container, so a test would need to mock APScheduler's `BlockingScheduler`
@@ -59,6 +63,20 @@ Roughly ranked by real risk, not just missing-line count:
 
 ## Next
 
+### 7. `require_role` is dead code — decide: wire it up or drop it
+`src/api/security/rbac.py` defines `require_role(*allowed)`, a dependency
+factory that enforces a specific role (403 on mismatch). It is exported and
+now fully tested, but **no route uses it** — every route depends on bare
+`current_user`, which accepts any of the three roles equally. So the
+`viewer`/`analyst`/`admin` distinction currently has no effect on the API:
+a `viewer` token can hit every endpoint a `admin` token can.
+
+Owner decision: either (a) apply `require_role(...)` to the routes that
+should be admin/analyst-only (e.g. is `viewer` supposed to reach the raw
+order lookup in `sales.py`?), or (b) delete `require_role` until there is a
+real access tier to enforce. Not something the loop should decide — it
+changes the effective authorization model.
+
 ### 4. Open dependabot PR #18 — next 14→16 (major runtime bump)
 50+ days old as of the last check. Next.js 14→16 is a major runtime bump —
 per the review-loop rules, major runtime bumps always wait for the owner.
@@ -69,6 +87,13 @@ correctly.
 ---
 
 ## Done
+
+- **PR #<TBD>** — Item 6 (rbac.py). `tests/backend/test_rbac.py` (new file,
+  14 tests) takes `src/api/security/rbac.py` from 68% → 100%. Covers the
+  invalid-token 401 path, the role allow-list reject, bearer case handling,
+  and the whole `require_role` factory. Mutation-tested each guard. 109 tests
+  pass (was 95); ruff + bandit clean. Filed item 7 (`require_role` has no
+  callers — an authorization-model decision for the owner).
 
 - **PR #36 (this PR)** — Backlog bookkeeping correction (items 1 and 2
   were already resolved in PRs #27/#28 but never ticked off — moved to
