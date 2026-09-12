@@ -3,7 +3,8 @@
 ## What this is
 
 Security-first e-commerce intelligence platform. FastAPI backend + React/TypeScript
-frontend. Private repo under `nassim0014`.
+frontend. Public repo under `nassim0014` — no private `astk` dependency may be
+imported here.
 
 ## Rules (inherited from the loop engine)
 
