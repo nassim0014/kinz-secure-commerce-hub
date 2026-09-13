@@ -32,6 +32,37 @@ docker compose up --build -d
 
 ## Now
 
+### 7. CI is broken on main — frontend `npm install` fails (ERESOLVE), blocking every frontend PR
+Found by the repo-review-loop, 2026-09-13. `main`'s CI has been red since
+**PR #43 (2026-09-02)**, which bumped `eslint` from `8.57.0` to `10.9.1` in
+`src/frontend/package.json`. `eslint-config-next@14.2.3` peer-depends on
+`eslint@"^7.23.0 || ^8.0.0"`, so `npm install`/`npm ci` in the `Frontend
+(Node 20)` and `Frontend (Node 22)` CI jobs now fails outright with:
+
+```
+npm error ERESOLVE could not resolve
+npm error Found: eslint@10.9.1
+npm error peer eslint@"^7.23.0 || ^8.0.0" from eslint-config-next@14.2.3
+npm error Conflicting peer dependency: eslint@8.57.1
+```
+
+This is a **pure lockstep gap**, not a real code defect: `eslint-config-next`
+was never bumped alongside `eslint`, so the two are now mutually
+incompatible. It has been broken for 10+ days as of this check (contract
+rule 5: a permanently-red main silently blocks every auto-merge in this
+repo, including otherwise-safe patch/minor dependabot PRs touching
+`src/frontend/**`).
+
+Fix is either: (a) revert the `eslint` bump until `eslint-config-next` also
+moves to a version that supports ESLint 10 (Next.js 14.2.3's
+`eslint-config-next` tops out around ESLint 8/9 support — check upstream
+before assuming a same-version pairing exists), or (b) bump
+`eslint-config-next` (and likely migrate to ESLint's flat config, which
+`eslint-config-next` versions supporting ESLint 9+ require) in the same PR
+as the `eslint` bump so they land together. Do not just pin `eslint` back
+down without checking whether anything already depends on ESLint 10
+features.
+
 ### 6. Remaining coverage gaps — pick the highest-value one next
 Roughly ranked by real risk, not just missing-line count:
 
