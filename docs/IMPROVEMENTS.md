@@ -69,7 +69,7 @@ correctly.
 
 ## Done
 
-- **(this PR, item 7)** — ~~CI broken on main — frontend `npm install`
+- **PR #60 (item 7)** — ~~CI broken on main — frontend `npm install`
   fails (ERESOLVE)~~ ✅ Fixed two lockstep dependency gaps in
   `src/frontend/package.json`, both introduced 2026-09-02: (1) `eslint` had
   been bumped to `10.9.1` (PR #43) without bumping `eslint-config-next`,
