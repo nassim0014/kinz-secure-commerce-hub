@@ -32,46 +32,14 @@ docker compose up --build -d
 
 ## Now
 
-### 7. CI is broken on main — frontend `npm install` fails (ERESOLVE), blocking every frontend PR
-Found by the repo-review-loop, 2026-09-13. `main`'s CI has been red since
-**PR #43 (2026-09-02)**, which bumped `eslint` from `8.57.0` to `10.9.1` in
-`src/frontend/package.json`. `eslint-config-next@14.2.3` peer-depends on
-`eslint@"^7.23.0 || ^8.0.0"`, so `npm install`/`npm ci` in the `Frontend
-(Node 20)` and `Frontend (Node 22)` CI jobs now fails outright with:
-
-```
-npm error ERESOLVE could not resolve
-npm error Found: eslint@10.9.1
-npm error peer eslint@"^7.23.0 || ^8.0.0" from eslint-config-next@14.2.3
-npm error Conflicting peer dependency: eslint@8.57.1
-```
-
-This is a **pure lockstep gap**, not a real code defect: `eslint-config-next`
-was never bumped alongside `eslint`, so the two are now mutually
-incompatible. It has been broken for 10+ days as of this check (contract
-rule 5: a permanently-red main silently blocks every auto-merge in this
-repo, including otherwise-safe patch/minor dependabot PRs touching
-`src/frontend/**`).
-
-Fix is either: (a) revert the `eslint` bump until `eslint-config-next` also
-moves to a version that supports ESLint 10 (Next.js 14.2.3's
-`eslint-config-next` tops out around ESLint 8/9 support — check upstream
-before assuming a same-version pairing exists), or (b) bump
-`eslint-config-next` (and likely migrate to ESLint's flat config, which
-`eslint-config-next` versions supporting ESLint 9+ require) in the same PR
-as the `eslint` bump so they land together. Do not just pin `eslint` back
-down without checking whether anything already depends on ESLint 10
-features.
-
 ### 6. Remaining coverage gaps — pick the highest-value one next
+**Re-verify before trusting the numbers below** — a fresh `pytest --cov` run
+on 2026-09-18 (while fixing item 7) already found `src/api/security/rbac.py`
+at **100%**, not the 68% recorded here. Don't trust this list without
+re-running coverage first.
+
 Roughly ranked by real risk, not just missing-line count:
 
-- `src/api/security/rbac.py` — 68% (8/25 missed, lines 29-30, 39, 50-58).
-  Role-based access control. Untested branches in an authorization module
-  are the highest-value gap left in the codebase — an RBAC bug fails
-  silently (wrong role let through) rather than loudly. **Security-review
-  territory: read the whole file and understand every branch before
-  writing tests, don't just chase the coverage number.**
 - `src/pipeline/jobs/scheduler.py` — 0% (24/24 missed). APScheduler
   wrapper; untested but also never exercised by anything except the live
   container, so a test would need to mock APScheduler's `BlockingScheduler`
@@ -101,7 +69,25 @@ correctly.
 
 ## Done
 
-- **PR #36 (this PR)** — Backlog bookkeeping correction (items 1 and 2
+- **(this PR, item 7)** — ~~CI broken on main — frontend `npm install`
+  fails (ERESOLVE)~~ ✅ Fixed two lockstep dependency gaps in
+  `src/frontend/package.json`, both introduced 2026-09-02: (1) `eslint` had
+  been bumped to `10.9.1` (PR #43) without bumping `eslint-config-next`,
+  which peer-requires `eslint@"^7.23.0 || ^8.0.0"` — reverted eslint to
+  `8.57.0`. (2) `react` had been bumped to `19.2.8` (PR #44) while
+  `react-dom` stayed at `18.3.1` and `next@14.2.3` peer-requires
+  `react@^18.2.0` — reverted `react`/`@types/react` to `18.3.1`/`18.3.2` to
+  match `react-dom`. Regenerated `package-lock.json`. Verified: reproduced
+  the original `npm ci` ERESOLVE failure on main first, then confirmed
+  `npm ci --no-audit --no-fund`, `npm run lint`, `npm test -- --ci
+  --coverage` (6 tests), and `npm run build` all pass after the fix.
+  Backend suite (102 tests), ruff, and bandit also re-verified unaffected.
+  NOT covered: this only restores the pre-2026-09-02 working versions: it
+  does not address the eslint 9+/flat-config migration or the react 19
+  upgrade that dependabot will likely re-propose — the two dependabot PRs
+  that reintroduce these bumps should land together with their peer deps
+  next time, not separately.
+- **PR #36** — Backlog bookkeeping correction (items 1 and 2
   were already resolved in PRs #27/#28 but never ticked off — moved to
   *Done* below with the real history). Same-PR code contribution: added
   `tests/backend/test_products.py` (previously had no test file at all),
