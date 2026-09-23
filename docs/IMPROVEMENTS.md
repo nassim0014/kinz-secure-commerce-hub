@@ -66,12 +66,12 @@ features.
 ### 6. Remaining coverage gaps — pick the highest-value one next
 Roughly ranked by real risk, not just missing-line count:
 
-- `src/api/security/rbac.py` — 68% (8/25 missed, lines 29-30, 39, 50-58).
-  Role-based access control. Untested branches in an authorization module
-  are the highest-value gap left in the codebase — an RBAC bug fails
-  silently (wrong role let through) rather than loudly. **Security-review
-  territory: read the whole file and understand every branch before
-  writing tests, don't just chase the coverage number.**
+- ~~`src/api/security/rbac.py` — 68% (8/25 missed)~~ — **stale as of
+  2026-09-23 (backlog-refresh re-check): now 25/25 statements, 100%
+  covered, 0 missing.** This is the same stale-bookkeeping failure mode
+  items 1/2 hit once before (see the note at the top of this file) —
+  re-verify numbers against `pytest --cov` before picking the next item
+  off this list, don't trust this text.
 - `src/pipeline/jobs/scheduler.py` — 0% (24/24 missed). APScheduler
   wrapper; untested but also never exercised by anything except the live
   container, so a test would need to mock APScheduler's `BlockingScheduler`
@@ -88,14 +88,32 @@ Roughly ranked by real risk, not just missing-line count:
   `security/passwords.py`, `security/audit.py`, `api/utils/__init__.py` —
   smaller gaps (2-11 lines each), mostly exception-handling branches.
 
+### 8. Production-safety gate's weak-password check is untested, and its wiring into app startup is never exercised at all   `source: coverage`
+
+`src/api/utils/config.py` is at 93% (missing 105, 116, 131-136, 150) and `src/api/main.py` at 85% (missing 67-73, 146-153, 181-183). All four existing tests in `tests/backend/test_security_hardening.py` pass a strong-password `DATABASE_URL`, so the weak-password marker loop in `enforce_production_safety()` (config.py:124-136) never executes, and `_validate_jwt_alg`'s reject-unrecognized-algorithm branch (config.py:105) is untested since only the explicit `"none"` rejection is covered. Most importantly: `tests/conftest.py:39` constructs `TestClient(app)` without the `with` context manager, so ASGI lifespan never fires anywhere in the test suite — `main.py:67`, the only call site of `enforce_production_safety()`, is never exercised. A regression that deleted the call from `lifespan()` entirely would pass CI green. This is exactly the production-safety gate SECURITY.md and README advertise ("app refuses to start if DATABASE_URL has a weak password"), so this ranks above item 6's remaining gaps. (`POSTGRES_PASSWORD_DEFAULT()` at config.py:148-150 is also dead code, never called anywhere — noted in passing, not a separate item.)
+
+### 9. 13 cosmetic ruff violations, concentrated in `analytics/kinz_eda.ipynb`   `source: ruff`
+
+`ruff check . --statistics`: 4× I001 (unsorted imports), 3× W293 (blank line w/ whitespace), 2× F541 (f-string w/ no placeholders), 2× E402 (import not at top of cell), 1× W291 (trailing whitespace), 1× B905 (`zip()` without `strict=`). 10 of 13 are in `analytics/kinz_eda.ipynb`; the other 3 are import-order (I001) in `tests/backend/test_kpis.py:7` and `tests/backend/test_rbac.py:10`. None are in `src/api/` — production code is ruff-clean. 10/13 are auto-fixable with `ruff check --fix`.
+
+Loop-Agent: backlog-refresh / claude / laptop
+
 ## Next
 
-### 4. Open dependabot PR #18 — next 14→16 (major runtime bump)
-50+ days old as of the last check. Next.js 14→16 is a major runtime bump —
-per the review-loop rules, major runtime bumps always wait for the owner.
-The repo also has a frontend with its own Dockerfile and tailwind config —
-the bump needs manual verification that the frontend still renders
-correctly.
+### 4. Next.js 14→16 (major runtime bump) — owner decision needed
+
+**Correction, 2026-09-23 (backlog-refresh re-check):** this item previously
+pointed at "open dependabot PR #18," but PR #18 was closed (not merged) on
+2026-08-19 — `gh pr view 18` shows `"state":"CLOSED","mergedAt":null`.
+`src/frontend/package.json` still pins `"next": "14.2.3"`, confirming the
+bump was never adopted. The underlying question (whether/how to move to
+Next 16) is still open — dependabot may reopen a PR for it on its normal
+schedule — but the specific PR this item named no longer exists.
+
+Next.js 14→16 is a major runtime bump — per the review-loop rules, major
+runtime bumps always wait for the owner. The repo also has a frontend with
+its own Dockerfile and tailwind config — the bump needs manual verification
+that the frontend still renders correctly.
 
 ---
 
