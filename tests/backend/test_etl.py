@@ -1,4 +1,6 @@
 """Unit test for the ETL transform layer."""
+import math
+
 import pandas as pd
 
 from src.pipeline.jobs.run_etl import transform_products, transform_sales
@@ -24,6 +26,28 @@ def test_transform_products_drops_invalid_prices():
     out = transform_products(df)
     assert len(out) == 1
     assert out.iloc[0]["product_id"] == "KINZ-002"
+
+
+def test_transform_products_zero_price_margin_pct_is_not_infinite():
+    """A price of 0.0 (e.g. a promo/freebie SKU) is valid numeric data, so
+    dropna(subset=["price_tnd", "cost_tnd"]) does not remove the row — but
+    (price - cost) / price then divides by zero. That silently produced
+    -inf/inf, which is not valid JSON and misrepresents an undefined margin
+    as a real number. It must come out as NaN instead, and the row must be
+    kept (only the margin is undefined, not the whole product).
+    """
+    df = pd.DataFrame([
+        {"product_id": "KINZ-003", "name": "Free Sample", "category": "X",
+         "product_type": "", "price_tnd": 0.0, "cost_tnd": 5.0, "stock_units": 10},
+        {"product_id": "KINZ-004", "name": "B", "category": "Y", "product_type": "",
+         "price_tnd": 50.0, "cost_tnd": 20.0, "stock_units": 8},
+    ])
+    out = transform_products(df)
+    assert len(out) == 2
+    zero_price_row = out[out["product_id"] == "KINZ-003"].iloc[0]
+    assert math.isnan(zero_price_row["margin_pct"])
+    normal_row = out[out["product_id"] == "KINZ-004"].iloc[0]
+    assert abs(normal_row["margin_pct"] - 0.6) < 1e-6
 
 
 def test_transform_sales_adds_year_month_and_quarter():
