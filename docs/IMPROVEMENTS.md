@@ -38,16 +38,28 @@ on 2026-09-18 (while fixing item 7) already found `src/api/security/rbac.py`
 at **100%**, not the 68% recorded here. Don't trust this list without
 re-running coverage first.
 
+**2026-09-25 (PR #62):** looking at `run_etl.py`'s gap for this item found a
+real bug, not just a coverage hole — `transform_products()`'s `margin_pct`
+divided by `price_tnd` unguarded, so a zero-priced product (valid data, not
+dropped by the NaN check above it) silently produced `-inf`/`inf` in
+`products_enriched.csv` instead of a sane value. Fixed (now `NaN` when
+`price_tnd == 0`, matching how `kpis.py` already treats a zero denominator)
+with a regression test. `run_etl.py` is still only at ~57% — `extract_*`,
+`load()`, `run()`, and the missing-columns `ValueError` branch remain
+untested — so it stays the top pick below, now for the remaining coverage
+rather than a known bug.
+
 Roughly ranked by real risk, not just missing-line count:
 
 - `src/pipeline/jobs/scheduler.py` — 0% (24/24 missed). APScheduler
   wrapper; untested but also never exercised by anything except the live
   container, so a test would need to mock APScheduler's `BlockingScheduler`
   rather than actually run jobs on a timer.
-- `src/pipeline/jobs/run_etl.py` — 56% (30/68 missed). The bulk of the
-  gap is in `transform_products`/`transform_sales`'s edge-case branches
-  (missing columns, empty frames) — same file the `SettingWithCopyWarning`
-  fix (PR #26 / this backlog's original item 1) already touched once.
+- `src/pipeline/jobs/run_etl.py` — ~57% (untested: `extract_products`/
+  `extract_sales`'s `FileNotFoundError` branches, `transform_products`'s
+  missing-columns `ValueError`, `transform_sales`'s dropped-rows warning
+  branch, `load()`, and `run()`). The margin_pct divide-by-zero bug in this
+  file was fixed in PR #62; what's left here is coverage, not a known bug.
 - `src/api/main.py` — 85% (11/72 missed, lines 67-73, 146-153, 181-183) —
   likely startup/shutdown lifecycle and error-handler branches, lower
   value than the above since they're exercised indirectly by every other
@@ -69,6 +81,18 @@ correctly.
 
 ## Done
 
+- **PR #62 (item 6, partial)** — Found while chasing `run_etl.py`'s coverage
+  gap: `transform_products()`'s `margin_pct = (price - cost) / price` divided
+  by zero for any product priced at `0.0` (valid, non-NaN data), silently
+  writing `-inf`/`inf` into `products_enriched.csv` — not valid JSON, would
+  break any future consumer that serializes the row. Fixed with `np.where` so
+  `margin_pct` is `NaN` (undefined) instead, matching the zero-denominator
+  convention `kpis.py` already uses. Added
+  `test_transform_products_zero_price_margin_pct_is_not_infinite`; verified it
+  fails on the pre-fix code (`math.isnan(-inf)` is `False`) and passes after.
+  103 tests pass (was 102), ruff clean. Item 6 itself is **not** fully done —
+  `run_etl.py`'s `extract_*`/`load`/`run` functions and the other files listed
+  under it are still uncovered; see the 2026-09-25 note above.
 - **PR #60 (item 7)** — ~~CI broken on main — frontend `npm install`
   fails (ERESOLVE)~~ ✅ Fixed two lockstep dependency gaps in
   `src/frontend/package.json`, both introduced 2026-09-02: (1) `eslint` had
