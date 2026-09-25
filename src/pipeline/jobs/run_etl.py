@@ -17,6 +17,7 @@ import logging
 from datetime import datetime
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 from src.api.utils import DATA_PROCESSED, DATA_RAW
@@ -61,8 +62,16 @@ def transform_products(df: pd.DataFrame) -> pd.DataFrame:
     if len(df) < before:
         logger.warning("Dropped %d product rows with invalid numerics", before - len(df))
 
-    # Derived: margin percent
-    df["margin_pct"] = ((df["price_tnd"] - df["cost_tnd"]) / df["price_tnd"]).round(4)
+    # Derived: margin percent. price_tnd == 0 (a promo/freebie SKU) is valid
+    # numeric data, so the dropna above does not remove it — but dividing by
+    # a zero price produced -inf/inf here, which downstream JSON consumers
+    # can't even serialize. np.where keeps the row and marks the margin NaN
+    # (undefined) instead of a fabricated infinite number.
+    df["margin_pct"] = np.where(
+        df["price_tnd"] != 0,
+        ((df["price_tnd"] - df["cost_tnd"]) / df["price_tnd"]).round(4),
+        np.nan,
+    )
     return df
 
 
