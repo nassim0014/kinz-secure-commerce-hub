@@ -15,7 +15,7 @@ bcrypt==5.0.0
 slowapi==0.1.9
 python-multipart==0.0.32
 pandas==3.0.5
-APScheduler==3.10.4
+APScheduler==3.11.3
 
 # Dev / test
 pytest==9.0.3
