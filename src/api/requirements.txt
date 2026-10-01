@@ -32,5 +32,5 @@ bandit==1.9.4
 # whole installed environment, so the 3.11 matrix leg failed while 3.12 passed —
 # Python 3.12 venvs no longer bundle setuptools at all. Pinning it here upgrades
 # the ambient copy on 3.11 and is a no-op on 3.12.
-setuptools>=83.0.0
+setuptools>=84.0.0
 
