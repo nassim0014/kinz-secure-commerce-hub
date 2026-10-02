@@ -1,8 +1,8 @@
-"""Tests for src/api/models/db.py — ORM model CRUD + defaults.
+"""Tests for src/api/models/db.py - ORM model CRUD + defaults.
 
 The module was at 0% coverage (38 statements, zero covered). The models
 are imported by every route, so import-time errors would crash the whole
-API — but field-level bugs (silent default, wrong column type) only
+API - but field-level bugs (silent default, wrong column type) only
 surface when a query hits them. These tests create, read, update, and
 delete each model against an in-memory SQLite database.
 """

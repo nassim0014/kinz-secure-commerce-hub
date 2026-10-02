@@ -1,10 +1,10 @@
-# Trivy exceptions — each entry must state WHY it cannot be acted on, and will
+# Trivy exceptions - each entry must state WHY it cannot be acted on, and will
 # stop being needed the moment that changes. This is not a place to silence
 # findings that are merely inconvenient.
 #
 # All entries below are vendored INSIDE pip itself (pip/_vendor/vendor.txt).
 # They are not installed as independent packages and cannot be upgraded
-# separately — `pip install --upgrade msgpack setuptools urllib3` has no
+# separately - `pip install --upgrade msgpack setuptools urllib3` has no
 # effect on them. The image already ships setuptools 84.0.0, msgpack 1.2.1
 # and urllib3 2.8.0 as real packages; these are pip's private bundled copies.
 #
@@ -18,7 +18,7 @@
 #     setuptools==70.3.0
 #
 # Verified 2026-10-02 the same way, pip still 26.2.1 (no newer release
-# exists — checked `pip index versions pip`), vendor.txt now also showing:
+# exists - checked `pip index versions pip`), vendor.txt now also showing:
 #     urllib3==2.7.0
 #   `trivy rootfs` against a fresh venv built from src/api/requirements.txt
 #   confirms pip/_vendor/urllib3/_version.py reads 2.7.0 and nothing else in
@@ -33,7 +33,7 @@ CVE-2025-47273
 
 # Same vendored setuptools 70.3.0, MEDIUM severity. Listed because the action
 # builds the SARIF report with ALL severities regardless of the `severity:`
-# input, so exit-code sees this one too — the severity filter does not apply on
+# input, so exit-code sees this one too - the severity filter does not apply on
 # the SARIF path.
 CVE-2026-59890
 

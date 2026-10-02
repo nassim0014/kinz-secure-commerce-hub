@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.6
-# KINZ Secure Commerce Hub — Backend API image (multi-stage, non-root, slim).
+# KINZ Secure Commerce Hub - Backend API image (multi-stage, non-root, slim).
 #
 # Build:
 #   docker build -t kinz-secure-commerce-hub:latest .
@@ -7,7 +7,7 @@
 #   docker run --rm -p 8000:8000 --env-file .env kinz-secure-commerce-hub:latest
 
 # ────────────────────────────────────────────────────────────
-# Stage 1: builder — install deps into a venv
+# Stage 1: builder - install deps into a venv
 # ────────────────────────────────────────────────────────────
 FROM python:3.11-slim AS builder
 
@@ -40,7 +40,7 @@ COPY src/api/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # ────────────────────────────────────────────────────────────
-# Stage 2: runtime — minimal image, no compiler toolchain
+# Stage 2: runtime - minimal image, no compiler toolchain
 # ────────────────────────────────────────────────────────────
 FROM python:3.11-slim AS runtime
 

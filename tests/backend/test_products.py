@@ -1,4 +1,4 @@
-"""Tests for /api/v1/products endpoints — catalog list + single lookup.
+"""Tests for /api/v1/products endpoints - catalog list + single lookup.
 
 products.py had no test file at all (72% coverage via incidental hits
 from other tests): the entire `/products/{product_id}` single-item
@@ -45,7 +45,7 @@ class TestListProducts:
             assert resp1.json()["items"][0]["product_id"] != resp2.json()["items"][0]["product_id"]
 
     def test_filter_by_category(self, client):
-        """Category filter branch (products.py line 32) — not previously exercised."""
+        """Category filter branch (products.py line 32) - not previously exercised."""
         resp = client.get("/api/v1/products?category=Skincare", headers=AUTH_HEADERS)
         assert resp.status_code == 200
         data = resp.json()

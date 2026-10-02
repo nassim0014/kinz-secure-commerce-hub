@@ -11,7 +11,7 @@ High-level architecture diagram lives in `README.md` (Mermaid). This file docume
 
 ## Data flow
 
-1. Raw CSVs land in `data/raw/` (currently a Shopify export — `products.csv`).
+1. Raw CSVs land in `data/raw/` (currently a Shopify export - `products.csv`).
 2. `src/pipeline/jobs/run_etl.py` loads, validates, and writes processed tables to `data/processed/`.
 3. The FastAPI backend reads `data/processed/` (in production this would be Postgres tables populated by the ETL).
 4. The Next.js dashboard calls the API and renders charts.

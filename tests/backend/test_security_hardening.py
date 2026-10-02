@@ -17,7 +17,7 @@ import jwt
 import pytest
 
 # ────────────────────────────────────────────────────────────
-# 1. JWT claims — iss / aud / jti are now required
+# 1. JWT claims - iss / aud / jti are now required
 # ────────────────────────────────────────────────────────────
 
 
@@ -171,7 +171,7 @@ def test_production_safety_rejects_wildcard_cors(monkeypatch):
         NODE_ENV="production",
         JWT_SECRET="a" * 48,  # strong secret
         DATABASE_URL="postgresql+psycopg://u:strongpass@db:5432/app",
-        CORS_ORIGINS="*",  # wildcard — forbidden in prod
+        CORS_ORIGINS="*",  # wildcard - forbidden in prod
         DEMO_USER_ENABLED=False,
     )
     with pytest.raises(RuntimeError) as exc_info:
@@ -237,7 +237,7 @@ def test_demo_login_rejects_wrong_password(client):
 
 
 def test_demo_login_rejects_invalid_email_format(client):
-    """LoginRequest.email is now EmailStr — must reject malformed emails."""
+    """LoginRequest.email is now EmailStr - must reject malformed emails."""
     resp = client.post(
         "/api/v1/auth/login",
         json={"email": "not-an-email", "password": "KINZ-demo-2025!"},
@@ -292,7 +292,7 @@ def test_audit_logger_creates_file_with_0600_permissions(tmp_path):
 
 
 # ────────────────────────────────────────────────────────────
-# 6. OWASP headers — verify the new CORP/COEP/COOP trio
+# 6. OWASP headers - verify the new CORP/COEP/COOP trio
 # ────────────────────────────────────────────────────────────
 
 

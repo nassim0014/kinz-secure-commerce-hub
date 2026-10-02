@@ -4,7 +4,7 @@ This guide walks through deploying **KINZ Secure Commerce Hub** to free-tier man
 
 - A Next.js dashboard running on **Vercel** (free tier).
 - A FastAPI backend running on **Render** (free tier).
-- A managed PostgreSQL database on **Render** (free tier — 90 days, then upgrade).
+- A managed PostgreSQL database on **Render** (free tier - 90 days, then upgrade).
 - All environment variables wired correctly.
 - A live URL you can share with recruiters and stakeholders.
 
@@ -37,7 +37,7 @@ npm i -g vercel
 5. Region: Frankfurt (closest to Tunisia with low latency).
 6. Plan: **Free** (or `Starter` for production).
 7. Click **Create Database**.
-8. Copy the **Internal Database URL** — you'll need it in step 2.2.
+8. Copy the **Internal Database URL** - you'll need it in step 2.2.
 
 ### 2.2 Create the API service
 
@@ -54,7 +54,7 @@ npm i -g vercel
 4. Under **Environment**, add the variables from `.env.example`. At minimum:
    ```
    DATABASE_URL=<Internal Database URL from step 2.1>
-   JWT_SECRET=<32+ random bytes — use `openssl rand -hex 32`>
+   JWT_SECRET=<32+ random bytes - use `openssl rand -hex 32`>
    JWT_ALGORITHM=HS256
    JWT_EXPIRE_MINUTES=60
    CORS_ORIGINS=https://kinz-secure-commerce-hub.vercel.app,http://localhost:3000
@@ -62,7 +62,7 @@ npm i -g vercel
    LOG_LEVEL=INFO
    ```
 5. Click **Create Web Service**. Render will build and deploy.
-6. Once live, open `https://kinz-api.onrender.com/docs` — you should see the Swagger UI.
+6. Once live, open `https://kinz-api.onrender.com/docs` - you should see the Swagger UI.
 
 ### 2.3 Smoke-test the API
 
@@ -128,7 +128,7 @@ curl https://kinz-api.onrender.com/api/v1/products?limit=3
 | Vercel Hobby           | 100 GB bandwidth / month                   | When traffic exceeds ~10k MAU                |
 | Render Web Service     | 750 hours / month, sleeps after 15 min idle| When you need always-on API                  |
 | Render PostgreSQL      | 90 days free, then $7/mo Starter           | Before the 90-day deadline                   |
-| Custom domain + HTTPS  | Free on Vercel                              | —                                            |
+| Custom domain + HTTPS  | Free on Vercel                              | -                                            |
 
 When upgrading:
 - Move the API to a Render **Starter** instance ($7/mo) for always-on.
@@ -146,4 +146,4 @@ When upgrading:
 
 ---
 
-Last updated: **2025-06-22** — Nassim K.
+Last updated: **2025-06-22** - Nassim K.

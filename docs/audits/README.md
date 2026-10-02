@@ -12,7 +12,7 @@ KINZ Secure Commerce Hub.
 ## Purpose
 
 These reports document the findings, fixes, and remaining roadmap for each audit.
-They are committed to the repo for transparency — reviewers, recruiters, and
+They are committed to the repo for transparency - reviewers, recruiters, and
 contributors can see exactly what was assessed and what was changed.
 
 ## Generating future reports

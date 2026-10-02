@@ -28,7 +28,7 @@ def test_verify_rejects_tampered_signature():
     This used to flip the LAST character of the signature, which is flaky: a
     32-byte HMAC is 43 base64url characters, and 43*6 = 258 bits encode only
     256, so the final character carries just 2 significant bits. Four of the
-    64 possible last characters decode to the same bytes — about 8% of tokens
+    64 possible last characters decode to the same bytes - about 8% of tokens
     ended up "tampered" into a re-spelling of themselves, and verify_token
     correctly did not raise. Measured at 3 failures in 25 identical runs.
 
@@ -52,7 +52,7 @@ def test_verify_rejects_tampered_signature():
 
 
 def test_verify_rejects_tampered_payload():
-    """Editing the claims invalidates the signature — the privilege-escalation case."""
+    """Editing the claims invalidates the signature - the privilege-escalation case."""
     token = issue_token(subject="user@example.com", role="viewer")
     head, payload, signature = token.split(".")
 

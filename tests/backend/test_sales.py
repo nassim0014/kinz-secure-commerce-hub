@@ -1,4 +1,4 @@
-"""Tests for /api/v1/sales endpoints — list + filter + order lookup.
+"""Tests for /api/v1/sales endpoints - list + filter + order lookup.
 
 sales.py was at 36% coverage (only the happy path of list_sales was
 exercised by test_api.py's smoke test). These tests cover every filter

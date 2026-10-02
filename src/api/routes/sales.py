@@ -1,4 +1,4 @@
-"""Sales endpoints — read processed sales CSV."""
+"""Sales endpoints - read processed sales CSV."""
 from __future__ import annotations
 
 import csv

@@ -11,7 +11,7 @@ from pathlib import Path
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# A list of secrets that are forbidden in production — if any of these
+# A list of secrets that are forbidden in production - if any of these
 # are detected, the app refuses to start when NODE_ENV=production.
 _INSECURE_SECRETS = frozenset(
     {
@@ -64,7 +64,7 @@ class Settings(BaseSettings):
     DEMO_USER_NAME: str = "Nassim K."
 
     # ---- Audit / logging ----
-    AUDIT_LOG_PATH: str = "/tmp/kinz-audit.log"  # nosec B108 — dev default; overridden in prod
+    AUDIT_LOG_PATH: str = "/tmp/kinz-audit.log"  # nosec B108 - dev default; overridden in prod
     AUDIT_LOG_MAX_BYTES: int = 10 * 1024 * 1024  # 10 MB per file
     AUDIT_LOG_BACKUP_COUNT: int = 5
     LOG_LEVEL: str = "INFO"

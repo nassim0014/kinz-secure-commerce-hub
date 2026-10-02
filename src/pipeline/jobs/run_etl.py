@@ -1,9 +1,9 @@
 """ETL pipeline for KINZ sales data.
 
 Stages:
-  1. Extract  — read raw CSVs (Shopify-style product export + raw orders)
-  2. Transform — validate schema, normalize types, derive computed fields
-  3. Load     — write processed tables to data/processed/ (and optionally Postgres)
+  1. Extract  - read raw CSVs (Shopify-style product export + raw orders)
+  2. Transform - validate schema, normalize types, derive computed fields
+  3. Load     - write processed tables to data/processed/ (and optionally Postgres)
 
 Run manually:
     python -m src.pipeline.jobs.run_etl
@@ -63,7 +63,7 @@ def transform_products(df: pd.DataFrame) -> pd.DataFrame:
         logger.warning("Dropped %d product rows with invalid numerics", before - len(df))
 
     # Derived: margin percent. price_tnd == 0 (a promo/freebie SKU) is valid
-    # numeric data, so the dropna above does not remove it — but dividing by
+    # numeric data, so the dropna above does not remove it - but dividing by
     # a zero price produced -inf/inf here, which downstream JSON consumers
     # can't even serialize. np.where keeps the row and marks the margin NaN
     # (undefined) instead of a fabricated infinite number.

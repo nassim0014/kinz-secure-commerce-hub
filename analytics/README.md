@@ -4,10 +4,10 @@ This folder contains the **Business Analyst** artifacts for KINZ Secure Commerce
 
 ## Notebooks
 
-- [`kinz_eda.ipynb`](./kinz_eda.ipynb) — Exploratory Data Analysis on the 2023–2024 sales dataset. Produces three business insights:
-  1. **Customer Lifetime Value by Channel** — B2B channels deliver 3–4× the CLV of B2C web.
-  2. **High-Margin SKU Concentration** — Vegetable Oils lead on margin %; Gift Sets lead on revenue.
-  3. **Channel Risk Map** — B2C Instagram is leaking margin (high discount + low basket).
+- [`kinz_eda.ipynb`](./kinz_eda.ipynb) - Exploratory Data Analysis on the 2023-2024 sales dataset. Produces three business insights:
+  1. **Customer Lifetime Value by Channel** - B2B channels deliver 3-4× the CLV of B2C web.
+  2. **High-Margin SKU Concentration** - Vegetable Oils lead on margin %; Gift Sets lead on revenue.
+  3. **Channel Risk Map** - B2C Instagram is leaking margin (high discount + low basket).
 
 ## Charts
 

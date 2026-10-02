@@ -1,4 +1,4 @@
-"""Products endpoints — read KINZ catalog from CSV."""
+"""Products endpoints - read KINZ catalog from CSV."""
 from __future__ import annotations
 
 import csv
