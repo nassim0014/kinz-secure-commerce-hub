@@ -8,9 +8,14 @@ sqlalchemy==2.1.0
 psycopg[binary]==3.3.6
 # NOTE: python-jose removed (CVE-2024-33664 algorithm confusion,
 #        CVE-2024-33663 JWT-bomb DoS, PYSEC-2025-185 JWE DoS).
-#        PyJWT is the maintained, CVE-free alternative and is what
-#        the codebase actually uses.
-PyJWT==2.13.0
+#        PyJWT is the maintained alternative and is what the codebase
+#        actually uses. 2.13.0 itself picked up 13 advisories (pip-audit,
+#        2026-10-01) incl. GHSA-gvp8-978c-rx2q (decode() mutating a
+#        caller-supplied options dict in place, bypassing claims
+#        verification on reuse) — that one has no patched release, only
+#        a version range of >=2.11.0,<=2.13.0, so moving past 2.13.0
+#        clears it along with the rest, which are fixed in 2.14.0/2.15.0.
+PyJWT==2.15.1
 bcrypt==5.0.0
 slowapi==0.1.9
 python-multipart==0.0.32
