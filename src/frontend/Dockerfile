@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.6
-# KINZ Secure Commerce Hub — Next.js frontend image (multi-stage, non-root).
+# KINZ Secure Commerce Hub - Next.js frontend image (multi-stage, non-root).
 #
 # Build:
 #   docker build -t kinz-web:latest .
@@ -7,7 +7,7 @@
 #   docker run --rm -p 3000:3000 --env-file .env kinz-web:latest
 
 # ────────────────────────────────────────────────────────────
-# Stage 1: deps — install node_modules (cached)
+# Stage 1: deps - install node_modules (cached)
 # ────────────────────────────────────────────────────────────
 FROM node:20-alpine AS deps
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY package.json package-lock.json* ./
 RUN npm ci --no-audit --no-fund 2>/dev/null || npm install --no-audit --no-fund
 
 # ────────────────────────────────────────────────────────────
-# Stage 2: builder — compile Next.js
+# Stage 2: builder - compile Next.js
 # ────────────────────────────────────────────────────────────
 FROM node:20-alpine AS builder
 WORKDIR /app
@@ -25,7 +25,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # ────────────────────────────────────────────────────────────
-# Stage 3: runtime — minimal image, non-root, no dev deps
+# Stage 3: runtime - minimal image, non-root, no dev deps
 # ────────────────────────────────────────────────────────────
 FROM node:20-alpine AS runtime
 WORKDIR /app

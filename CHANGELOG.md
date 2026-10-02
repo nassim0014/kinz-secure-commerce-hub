@@ -7,13 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### 🛡️ Security
+### ️ Security
 - **BREAKING:** Removed `python-jose` (CVE-2024-33664 algorithm confusion,
   CVE-2024-33663 JWT-bomb DoS, PYSEC-2025-185 JWE DoS). `PyJWT` is the only
   JWT library now used.
 - **BREAKING:** JWT tokens now require `iss`, `aud`, and `jti` claims.
   `verify_token()` validates all three on every request. Tokens issued
-  by previous versions will be rejected — re-issue tokens after deploy.
+  by previous versions will be rejected - re-issue tokens after deploy.
 - Fixed critical bug where the demo user's bcrypt hash was an invalid
   placeholder (`Invalid salt` on every login attempt). The hash is now
   read from `DEMO_USER_PASSWORD_HASH` and must be a valid 60-char bcrypt hash.
@@ -29,14 +29,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Audit logger now rotates (10 MB × 5 files by default) and fails loud
   in production instead of silently falling back to `/tmp`.
 
-### ✨ Added
+### Added
 - `request_id` middleware: every request gets a UUID4 correlation ID
   echoed in `X-Request-ID` and bound to the logging context.
-- `.dockerignore` — reduces image size and prevents leaking `.env`,
+- `.dockerignore` - reduces image size and prevents leaking `.env`,
   `.git`, and `node_modules` into the build context.
-- Multi-stage `Dockerfile` (builder + runtime) — no `build-essential`
+- Multi-stage `Dockerfile` (builder + runtime) - no `build-essential`
   in the final image, ~40% smaller.
-- `src/frontend/Dockerfile` — production Next.js standalone build.
+- `src/frontend/Dockerfile` - production Next.js standalone build.
 - `docker-compose.yml` hardened: `read_only: true`, `cap_drop: ALL`,
   `no-new-privileges`, memory/CPU limits, `backend` network is
   `internal: true`, postgres port binds to `127.0.0.1` only.
@@ -54,19 +54,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `LoginRequest.email` is now validated as a real email (`EmailStr`).
 - `LoginRequest.password` enforces `min_length=8, max_length=128`.
 
-### 🔧 Changed
+### Changed
 - Switched `config.py` from raw `os.getenv` to `pydantic-settings`
-  `BaseSettings` — proper type coercion, env-file support, validators.
+  `BaseSettings` - proper type coercion, env-file support, validators.
 - `auth.py` no longer hardcodes the demo user's email or password hash;
   both are read from env vars.
 - `unhandled_exception_handler` now returns a `request_id` in the
   error body so users can quote it when reporting issues.
 
-### 🗑️ Removed
+### ️ Removed
 - `python-jose[cryptography]` (3 CVEs).
 - Hardcoded demo credentials from `auth.py` source.
 
-## [1.0.0] — 2025-06-22
+## [1.0.0] - 2025-06-22
 
 Initial public release.
 

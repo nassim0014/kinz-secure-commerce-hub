@@ -2,8 +2,8 @@
 
 `src/api/security/rbac.py` sat at 68% coverage with the exception branch
 in `current_user()` (invalid/undecodable token), the invalid-role-claim
-guard, and the entire `require_role()` factory untested — the highest-value
-gap flagged in docs/IMPROVEMENTS.md, since an RBAC bug fails silently
+guard, and the entire `require_role()` factory untested - the highest-value
+gap, since an RBAC bug fails silently
 (wrong role let through) rather than loudly.
 """
 
@@ -22,7 +22,7 @@ def test_current_user_rejects_missing_authorization_header():
 
 def test_current_user_rejects_undecodable_token():
     """Covers the PyJWTError except branch in current_user(): a malformed
-    token (not just an expired/tampered one — genuinely undecodable) must
+    token (not just an expired/tampered one - genuinely undecodable) must
     surface as a 401, not an unhandled exception."""
     with pytest.raises(HTTPException) as exc_info:
         current_user(authorization="Bearer not-a-real-jwt")

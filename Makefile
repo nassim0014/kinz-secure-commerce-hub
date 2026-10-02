@@ -6,15 +6,15 @@ VENV   ?= .venv
 .PHONY: help setup test lint ruff check clean
 
 help:
-	@echo "Kinz Secure Commerce Hub — Makefile"
+	@echo "Kinz Secure Commerce Hub - Makefile"
 	@echo ""
 	@echo "Targets:"
-	@echo "  make setup   — create venv and install API requirements"
-	@echo "  make test    — run pytest suite"
-	@echo "  make lint    — syntax-check all Python files"
-	@echo "  make ruff    — run ruff linter"
-	@echo "  make check   — run test + ruff (full local CI gate)"
-	@echo "  make clean   — remove venv and caches"
+	@echo "  make setup   - create venv and install API requirements"
+	@echo "  make test    - run pytest suite"
+	@echo "  make lint    - syntax-check all Python files"
+	@echo "  make ruff    - run ruff linter"
+	@echo "  make check   - run test + ruff (full local CI gate)"
+	@echo "  make clean   - remove venv and caches"
 
 setup: $(VENV)/bin/activate
 	@echo "✅ Virtualenv ready at $(VENV)"

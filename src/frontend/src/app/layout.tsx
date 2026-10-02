@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'KINZ Secure Commerce Hub',
-  description: 'Security-first e-commerce intelligence dashboard for KINZ — Tunisian natural cosmetics & vegetable oils.',
+  description: 'Security-first e-commerce intelligence dashboard for KINZ - Tunisian natural cosmetics & vegetable oils.',
   metadataBase: new URL('https://kinz-secure-commerce-hub.vercel.app'),
 };
 

@@ -37,7 +37,7 @@ export function Dashboard() {
     async function load() {
       try {
         // In dev, Next.js rewrites /api/* to the FastAPI backend.
-        // For the demo we don't require auth — the dashboard reads public
+        // For the demo we don't require auth - the dashboard reads public
         // summary endpoints. Wire a login flow before going live.
         const [k, c] = await Promise.all([
           fetch('/api/v1/kpis/summary').then((r) => r.json()),
@@ -54,7 +54,7 @@ export function Dashboard() {
     load();
   }, []);
 
-  if (loading) return <div className="text-kinz-500">Loading KINZ dashboard…</div>;
+  if (loading) return <div className="text-kinz-500">Loading KINZ dashboard...</div>;
   if (error || !kpi) return <div className="text-red-600">Error: {error ?? 'no data'}</div>;
 
   return (

@@ -33,16 +33,16 @@ Built by **Nassim K.**
 
 ## Business Value
 
-KINZ sells Tunisian vegetable oils (prickly pear seed oil, sweet almond, nigella, sesame) and a growing line of natural cosmetics. Like most D2C brands operating across web, Instagram, and a B2B pharmacy/spa network, the team was drowning in fragmented spreadsheets — Shopify exports, Instagram DM logs, pharmacy orders, manual stock counts with no single source of truth for revenue, margin, or customer behavior.
+KINZ sells Tunisian vegetable oils (prickly pear seed oil, sweet almond, nigella, sesame) and a growing line of natural cosmetics. Like most D2C brands operating across web, Instagram, and a B2B pharmacy/spa network, the team was drowning in fragmented spreadsheets - Shopify exports, Instagram DM logs, pharmacy orders, manual stock counts with no single source of truth for revenue, margin, or customer behavior.
 
 This hub consolidates that chaos into one secure, containerized platform that delivers four concrete capabilities:
 
-- **Single source of truth** — One PostgreSQL database fed by an automated ETL pipeline. Sales, customers, products, and inventory are reconciled every night and exposed through a typed FastAPI.
-- **Analyst-grade dashboards** — A Next.js dashboard surfaces revenue, margin, customer lifetime value, channel performance, and stock health. Filters by date range, channel (B2C/B2B), and product category.
-- **Security by design** — JWT auth, bcrypt hashing, rate-limiting, OWASP-aligned HTTP headers, append-only audit logs, and dependency scanning in CI. Customer data is protected end-to-end, which is essential for a Tunisian brand expanding into EU markets under GDPR.
-- **One-command local stack** — `docker compose up` brings up the API, the dashboard, and PostgreSQL. Recruiters, teammates, and auditors can review the full stack locally in under two minutes.
+- **Single source of truth** - One PostgreSQL database fed by an automated ETL pipeline. Sales, customers, products, and inventory are reconciled every night and exposed through a typed FastAPI.
+- **Analyst-grade dashboards** - A Next.js dashboard surfaces revenue, margin, customer lifetime value, channel performance, and stock health. Filters by date range, channel (B2C/B2B), and product category.
+- **Security by design** - JWT auth, bcrypt hashing, rate-limiting, OWASP-aligned HTTP headers, append-only audit logs, and dependency scanning in CI. Customer data is protected end-to-end, which is essential for a Tunisian brand expanding into EU markets under GDPR.
+- **One-command local stack** - `docker compose up` brings up the API, the dashboard, and PostgreSQL. Recruiters, teammates, and auditors can review the full stack locally in under two minutes.
 
-The repository doubles as a portfolio artifact: it shows I can ship a multi-component, production-shaped system that combines business analysis (real KINZ product data, real EDA, real insights), full-stack engineering, DevOps, and a security mindset — all in one place.
+The repository doubles as a portfolio artifact: it shows I can ship a multi-component, production-shaped system that combines business analysis (real KINZ product data, real EDA, real insights), full-stack engineering, DevOps, and a security mindset - all in one place.
 
 ---
 
@@ -186,7 +186,7 @@ docker compose up --build
 
 - Frontend dashboard: http://localhost:3000
 - Backend API + Swagger docs: http://localhost:8000/docs  *(disabled when NODE_ENV=production)*
-- PostgreSQL: 127.0.0.1:5432  *(binds to localhost only — not exposed publicly)*
+- PostgreSQL: 127.0.0.1:5432  *(binds to localhost only - not exposed publicly)*
 
 ### Demo credentials
 
@@ -204,8 +204,8 @@ docker compose up --build
 
 | View                  | Preview                                                                                          | What it shows                                                       |
 |-----------------------|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| Dashboard overview    | ![Dashboard](./docs/images/dashboard-mockup.png)                                                 | Revenue, margin, AOV, active customers — KPIs at a glance          |
-| Channel breakdown     | ![Channels](./docs/images/channels-mockup.png)                                                    | B2C web vs. Instagram vs. B2B pharmacies — revenue & margin        |
+| Dashboard overview    | ![Dashboard](./docs/images/dashboard-mockup.png)                                                 | Revenue, margin, AOV, active customers - KPIs at a glance          |
+| Channel breakdown     | ![Channels](./docs/images/channels-mockup.png)                                                    | B2C web vs. Instagram vs. B2B pharmacies - revenue & margin        |
 | Product performance   | ![Products](./docs/images/products-mockup.png)                                                    | Top SKUs by revenue and by margin (Vegetable Oils typically lead)  |
 | Login + 2FA screen    | ![Login](./docs/images/login-mockup.png)                                                          | JWT login flow with audit logging                                   |
 | API Swagger docs      | ![Swagger](./docs/images/swagger-mockup.png)                                                      | Auto-generated OpenAPI spec at `/docs`                              |
@@ -216,9 +216,9 @@ docker compose up --build
 
 The `analytics/kinz_eda.ipynb` notebook runs a real EDA on the sales dataset and produces three concrete business insights:
 
-1. **Customer Lifetime Value by Channel** — B2B pharmacy & spa channels have ~3.5× higher CLV than B2C web, justifying a dedicated B2B account manager.
-2. **High-Margin SKU Concentration** — Vegetable Oils (especially prickly pear seed oil) deliver the highest gross margin %, but Gift Sets drive the highest absolute revenue. The two should be cross-promoted in Q4.
-3. **Channel Risk** — B2C Instagram orders have a 23% higher discount rate and 17% higher return rate than B2C web. The marketing team should reconsider Instagram-only promo codes.
+1. **Customer Lifetime Value by Channel** - B2B pharmacy & spa channels have ~3.5× higher CLV than B2C web, justifying a dedicated B2B account manager.
+2. **High-Margin SKU Concentration** - Vegetable Oils (especially prickly pear seed oil) deliver the highest gross margin %, but Gift Sets drive the highest absolute revenue. The two should be cross-promoted in Q4.
+3. **Channel Risk** - B2C Instagram orders have a 23% higher discount rate and 17% higher return rate than B2C web. The marketing team should reconsider Instagram-only promo codes.
 
 Each insight is backed by a Matplotlib/Seaborn chart exported to `analytics/charts/`.
 
@@ -273,7 +273,7 @@ vercel --prod
 
 ## License
 
-MIT — see [`LICENSE`](./LICENSE).
+MIT - see [`LICENSE`](./LICENSE).
 
 ---
 

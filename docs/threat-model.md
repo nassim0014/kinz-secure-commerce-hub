@@ -1,4 +1,4 @@
-# Threat Model — KINZ Secure Commerce Hub
+# Threat Model - KINZ Secure Commerce Hub
 
 Methodology: **STRIDE** (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege).
 Scope: This covers the application as deployed in `docker-compose.yml` and as described in `docs/deployment.md`.
@@ -26,7 +26,7 @@ Trust boundaries:
 
 ## 2. STRIDE Analysis
 
-### S — Spoofing
+### S - Spoofing
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -37,7 +37,7 @@ Trust boundaries:
 | Attacker presents a JWT meant for a different audience | `aud` claim validated against `JWT_AUDIENCE` env var; mismatch → 401                   |
 | Attacker reuses a revoked JWT                    | `jti` (UUID4) claim on every token; future revocation list can be keyed on `jti`            |
 
-### T — Tampering
+### T - Tampering
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -45,14 +45,14 @@ Trust boundaries:
 | SQL injection via filter parameters               | SQLAlchemy parameterized queries everywhere; no raw string SQL                              |
 | Tampered audit log to hide tracks                 | Append-only writes; log file permissions `0600`; CI checks log integrity hash              |
 
-### R — Repudiation
+### R - Repudiation
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
 | User denies placing a destructive action          | Every mutating endpoint writes to audit log with `user_id`, `endpoint`, `ip`, `timestamp`  |
 | Admin denies changing a user's role               | Role changes trigger an explicit audit event including the previous and new role            |
 
-### I — Information Disclosure
+### I - Information Disclosure
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -65,7 +65,7 @@ Trust boundaries:
 | Audit log grows unbounded, filling disk           | Rotating audit logger: 10 MB × 5 files by default; configurable via `AUDIT_LOG_MAX_BYTES` / `AUDIT_LOG_BACKUP_COUNT` |
 | Audit log world-readable on shared host           | Log file created with mode `0600`; parent dir `0700`                                        |
 
-### D — Denial of Service
+### D - Denial of Service
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -73,7 +73,7 @@ Trust boundaries:
 | Expensive analytics query cripples API            | Default `LIMIT` on all list endpoints; max date range enforced (365 days)                  |
 | DDoS at the edge                                 | Vercel + Render provide managed DDoS protection at the network edge                         |
 
-### E — Elevation of Privilege
+### E - Elevation of Privilege
 
 | Threat                                           | Mitigation                                                                                  |
 |--------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -100,4 +100,4 @@ This threat model is reviewed:
 - Quarterly as part of the security review.
 - After any security incident, real or simulated.
 
-Last review: **2025-06-29** — Nassim K. (post production-readiness hardening pass)
+Last review: **2025-06-29** - Nassim K. (post production-readiness hardening pass)

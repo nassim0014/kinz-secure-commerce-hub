@@ -30,7 +30,7 @@ def test_transform_products_drops_invalid_prices():
 
 def test_transform_products_zero_price_margin_pct_is_not_infinite():
     """A price of 0.0 (e.g. a promo/freebie SKU) is valid numeric data, so
-    dropna(subset=["price_tnd", "cost_tnd"]) does not remove the row — but
+    dropna(subset=["price_tnd", "cost_tnd"]) does not remove the row - but
     (price - cost) / price then divides by zero. That silently produced
     -inf/inf, which is not valid JSON and misrepresents an undefined margin
     as a real number. It must come out as NaN instead, and the row must be

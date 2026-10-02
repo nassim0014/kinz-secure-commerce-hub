@@ -1,4 +1,4 @@
-# FastAPI backend dependencies — pinned for reproducible builds.
+# FastAPI backend dependencies - pinned for reproducible builds.
 fastapi==0.141.1
 uvicorn[standard]==0.27.1
 pydantic==2.13.4
@@ -12,7 +12,7 @@ psycopg[binary]==3.3.6
 #        actually uses. 2.13.0 itself picked up 13 advisories (pip-audit,
 #        2026-10-01) incl. GHSA-gvp8-978c-rx2q (decode() mutating a
 #        caller-supplied options dict in place, bypassing claims
-#        verification on reuse) — that one has no patched release, only
+#        verification on reuse) - that one has no patched release, only
 #        a version range of >=2.11.0,<=2.13.0, so moving past 2.13.0
 #        clears it along with the rest, which are fixed in 2.14.0/2.15.0.
 PyJWT==2.15.1
@@ -34,7 +34,7 @@ bandit==1.9.4
 # Build-time toolchain, pinned only to satisfy `pip-audit --strict`.
 # setuptools is not imported by this application. It ships ambiently in the
 # Python 3.11 runner image (79.0.1, PYSEC-2026-3447) and pip-audit inspects the
-# whole installed environment, so the 3.11 matrix leg failed while 3.12 passed —
+# whole installed environment, so the 3.11 matrix leg failed while 3.12 passed -
 # Python 3.12 venvs no longer bundle setuptools at all. Pinning it here upgrades
 # the ambient copy on 3.11 and is a no-op on 3.12.
 setuptools>=84.0.0

@@ -21,31 +21,31 @@ class OWASPHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-Frame-Options"] = "DENY"
         # MIME sniffing
         response.headers["X-Content-Type-Options"] = "nosniff"
-        # HSTS — only meaningful over HTTPS, but harmless on localhost.
+        # HSTS - only meaningful over HTTPS, but harmless on localhost.
         # 2 years + preload + includeSubDomains per OWASP recommendation.
         response.headers["Strict-Transport-Security"] = (
             "max-age=63072000; includeSubDomains; preload"
         )
-        # Referrer policy — only leak origin, not full URL or path.
+        # Referrer policy - only leak origin, not full URL or path.
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        # Permissions policy — lock down camera, mic, geolocation, etc.
+        # Permissions policy - lock down camera, mic, geolocation, etc.
         response.headers["Permissions-Policy"] = (
             "geolocation=(), microphone=(), camera=(), "
             "payment=(), usb=(), magnetometer=(), gyroscope=()"
         )
-        # Content Security Policy — strict for an API (no inline, no frames).
+        # Content Security Policy - strict for an API (no inline, no frames).
         response.headers["Content-Security-Policy"] = (
             "default-src 'none'; frame-ancestors 'none'; base-uri 'none'"
         )
-        # Cross-Origin isolation headers — defense against Spectre-class
+        # Cross-Origin isolation headers - defense against Spectre-class
         # side-channel attacks. The API returns JSON only, so CORP/COEP
         # are safe to enable.
         response.headers["Cross-Origin-Resource-Policy"] = "same-origin"
         response.headers["Cross-Origin-Opener-Policy"] = "same-origin"
         response.headers["Cross-Origin-Embedder-Policy"] = "require-corp"
-        # DNS prefetch control — disable to prevent information leakage.
+        # DNS prefetch control - disable to prevent information leakage.
         response.headers["X-DNS-Prefetch-Control"] = "off"
-        # Cache control for API responses — never cache authenticated responses.
+        # Cache control for API responses - never cache authenticated responses.
         if request.url.path.startswith("/api/"):
             response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
             response.headers["Pragma"] = "no-cache"

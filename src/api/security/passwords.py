@@ -1,4 +1,4 @@
-"""bcrypt password hashing — constant-time comparison."""
+"""bcrypt password hashing - constant-time comparison."""
 from __future__ import annotations
 
 import bcrypt

@@ -11,7 +11,7 @@ DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
 
 
 def safe_int(value, default: int = 0) -> int:
-    """Tolerant int cast — used when validating query params."""
+    """Tolerant int cast - used when validating query params."""
     try:
         return int(value)
     except (TypeError, ValueError):

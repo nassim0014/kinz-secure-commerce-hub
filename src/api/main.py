@@ -1,5 +1,5 @@
 """
-KINZ Secure Commerce Hub — FastAPI entrypoint.
+KINZ Secure Commerce Hub - FastAPI entrypoint.
 
 Boots the FastAPI application, wires security middleware (rate-limiter,
 OWASP headers, audit logging, JWT auth, request-ID correlation), and
@@ -32,7 +32,7 @@ logging.basicConfig(
     format="%(asctime)s | %(levelname)-8s | %(name)s | %(request_id)s | %(message)s",
 )
 # Default request_id for non-request log lines (e.g. startup)
-logging.Logger = logging.getLoggerClass()  # noqa: F811 — keep class ref for filters
+logging.Logger = logging.getLoggerClass()  # noqa: F811 - keep class ref for filters
 
 
 class _RequestIdFilter(logging.Filter):
@@ -63,7 +63,7 @@ audit = AuditLogger(
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Production safety check — fail fast on insecure configs.
+    # Production safety check - fail fast on insecure configs.
     settings.enforce_production_safety()
 
     logger.info("KINZ Secure Commerce Hub API starting up")
@@ -180,4 +180,4 @@ def root():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="0.0.0.0", port=settings.PORT_API, reload=True)  # nosec B104 — bind-all required for Docker containers
+    uvicorn.run("main:app", host="0.0.0.0", port=settings.PORT_API, reload=True)  # nosec B104 - bind-all required for Docker containers

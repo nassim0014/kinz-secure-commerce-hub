@@ -58,7 +58,7 @@ services:
     volumes:
       - ./data:/app/data:ro
       - kinz_audit:/var/log/kinz
-    # Read-only root filesystem — app writes only to /var/log/kinz (volume)
+    # Read-only root filesystem - app writes only to /var/log/kinz (volume)
     # and /tmp (default Docker writable tmpfs).
     read_only: true
     tmpfs:

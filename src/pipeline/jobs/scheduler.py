@@ -1,4 +1,4 @@
-"""APScheduler wiring — runs the ETL nightly at 02:00.
+"""APScheduler wiring - runs the ETL nightly at 02:00.
 
 In production this would run inside the API container or a dedicated
 worker. For local dev, run it as a script:

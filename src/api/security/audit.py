@@ -48,13 +48,13 @@ class AuditLogger:
                 os.chmod(self.path, 0o600)
         except OSError:
             # Fall back to /tmp ONLY in non-production. In production we
-            # want a loud failure — call .log() will re-raise if the path
+            # want a loud failure - call .log() will re-raise if the path
             # is unwritable. The fallback is for local dev convenience.
             from src.api.utils.config import settings
 
             if settings.is_production:
                 raise
-            self.path = Path("/tmp/kinz-audit.log")  # nosec B108 — dev-only fallback
+            self.path = Path("/tmp/kinz-audit.log")  # nosec B108 - dev-only fallback
             self.path.touch(exist_ok=True)
 
     def log(self, action: str, user: str = "anonymous", detail: str = "", ip: str = "") -> None:

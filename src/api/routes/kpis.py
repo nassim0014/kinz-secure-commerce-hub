@@ -1,4 +1,4 @@
-"""KPI endpoints — pre-computed business metrics for the dashboard."""
+"""KPI endpoints - pre-computed business metrics for the dashboard."""
 from __future__ import annotations
 
 import csv
@@ -43,7 +43,7 @@ def summary(
             gross_margin_pct=0,
             unique_customers=0,
             b2b_share_pct=0,
-            top_category="—",
+            top_category="-",
         )
 
     order_totals: dict[str, float] = defaultdict(float)
@@ -79,7 +79,7 @@ def summary(
     gross_margin = revenue - cogs
     gross_margin_pct = (gross_margin / revenue * 100) if revenue else 0
     b2b_share_pct = (len(b2b_orders) / orders_count * 100) if orders_count else 0
-    top_category = max(cat_revenue, key=cat_revenue.get) if cat_revenue else "—"
+    top_category = max(cat_revenue, key=cat_revenue.get) if cat_revenue else "-"
 
     return KpiSummary(
         revenue_tnd=round(revenue, 3),

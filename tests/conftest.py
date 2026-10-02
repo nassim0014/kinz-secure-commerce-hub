@@ -1,4 +1,4 @@
-"""Pytest configuration — project root on sys.path so `src.*` imports work."""
+"""Pytest configuration - project root on sys.path so `src.*` imports work."""
 import os
 import sys
 from pathlib import Path
@@ -11,10 +11,10 @@ sys.path.insert(0, str(ROOT))
 os.environ.setdefault("JWT_SECRET", "ci-test-secret-32-bytes-or-more-xxxxxx")
 os.environ.setdefault("JWT_ISSUER", "kinz-secure-commerce-hub")
 os.environ.setdefault("JWT_AUDIENCE", "kinz-api")
-os.environ.setdefault("AUDIT_LOG_PATH", "/tmp/kinz-ci-audit.log")  # nosec B108 — CI-only
+os.environ.setdefault("AUDIT_LOG_PATH", "/tmp/kinz-ci-audit.log")  # nosec B108 - CI-only
 os.environ.setdefault("DEMO_USER_ENABLED", "true")
 os.environ.setdefault("DEMO_USER_EMAIL", "nassim@kinzoils.com")
-# Real bcrypt hash for "KINZ-demo-2025!" (12 rounds) — generated with bcrypt.hashpw()
+# Real bcrypt hash for "KINZ-demo-2025!" (12 rounds) - generated with bcrypt.hashpw()
 os.environ.setdefault(
     "DEMO_USER_PASSWORD_HASH",
     "$2b$12$90JOIYIldwPChFGagj4hPehUSQIRNFzTHmaaRZm9hyAAmqmo/23iG",

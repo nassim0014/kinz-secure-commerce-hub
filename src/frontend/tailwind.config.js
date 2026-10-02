@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // KINZ brand palette — warm Tunisian desert + olive accent
+        // KINZ brand palette - warm Tunisian desert + olive accent
         kinz: {
           50:  '#fbf7f0',
           100: '#f3e9d6',

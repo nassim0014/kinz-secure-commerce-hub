@@ -1,4 +1,4 @@
-"""Tests for /api/v1/kpis endpoints — KPI summary + channel breakdown.
+"""Tests for /api/v1/kpis endpoints - KPI summary + channel breakdown.
 
 The kpis.py module was at 18% coverage (lines 18-22, 31-84, 98-128
 uncovered). These tests exercise both routes + the date-filter branches
@@ -46,7 +46,7 @@ class TestKpiSummary:
         data = resp.json()
         assert data["orders"] == 0
         assert data["revenue_tnd"] == 0
-        assert data["top_category"] == "—"
+        assert data["top_category"] == "-"
 
     def test_summary_revenue_matches_orders(self, client):
         """Revenue should be positive when there are orders."""

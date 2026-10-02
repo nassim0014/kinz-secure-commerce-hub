@@ -30,7 +30,7 @@ def _get_demo_user() -> dict | None:
         return None
     if not settings.DEMO_USER_PASSWORD_HASH:
         # Misconfiguration: demo mode enabled but no hash set.
-        # Fail closed — no demo login possible.
+        # Fail closed - no demo login possible.
         return None
     return {
         "email": settings.DEMO_USER_EMAIL,
@@ -49,7 +49,7 @@ def login(payload: LoginRequest, request: Request) -> TokenResponse:
 
     demo_user = _get_demo_user()
     if demo_user is None:
-        # Don't reveal whether demo mode is on or off — same error as bad creds.
+        # Don't reveal whether demo mode is on or off - same error as bad creds.
         audit.log("auth.login_failed", user=payload.email, ip=ip, detail="demo_disabled_or_misconfigured")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
