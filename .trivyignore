@@ -2,11 +2,11 @@
 # stop being needed the moment that changes. This is not a place to silence
 # findings that are merely inconvenient.
 #
-# Both entries below are vendored INSIDE pip itself (pip/_vendor/vendor.txt).
+# All entries below are vendored INSIDE pip itself (pip/_vendor/vendor.txt).
 # They are not installed as independent packages and cannot be upgraded
-# separately — `pip install --upgrade msgpack setuptools` has no effect on
-# them. The image already ships setuptools 84.0.0 and msgpack 1.2.1 as real
-# packages; these are pip's private bundled copies.
+# separately — `pip install --upgrade msgpack setuptools urllib3` has no
+# effect on them. The image already ships setuptools 84.0.0, msgpack 1.2.1
+# and urllib3 2.8.0 as real packages; these are pip's private bundled copies.
 #
 # The only fix is a pip release that vendors newer versions. The image already
 # pins pip>=26.1.2 and resolves to 26.2.1, the newest available. Re-check when
@@ -16,6 +16,14 @@
 #   /opt/venv/lib/python3.11/site-packages/pip/_vendor/vendor.txt
 #     msgpack==1.1.2
 #     setuptools==70.3.0
+#
+# Verified 2026-10-02 the same way, pip still 26.2.1 (no newer release
+# exists — checked `pip index versions pip`), vendor.txt now also showing:
+#     urllib3==2.7.0
+#   `trivy rootfs` against a fresh venv built from src/api/requirements.txt
+#   confirms pip/_vendor/urllib3/_version.py reads 2.7.0 and nothing else in
+#   the dependency set pulls in a vulnerable urllib3 (the real top-level
+#   urllib3 package resolves to 2.8.0, clean).
 
 # msgpack 1.1.2 vendored in pip 26.2.1 (real msgpack package is 1.2.1)
 GHSA-6v7p-g79w-8964
@@ -28,3 +36,12 @@ CVE-2025-47273
 # input, so exit-code sees this one too — the severity filter does not apply on
 # the SARIF path.
 CVE-2026-59890
+
+# urllib3 2.7.0 vendored in pip 26.2.1 via its bundled `requests` (real
+# urllib3 package resolves to 2.8.0, clean). HIGH: TLS proxy config can be
+# overridden, allowing traffic interception.
+CVE-2026-97687
+
+# Same vendored urllib3 2.7.0. HIGH: unbounded memory allocation in the
+# chunked-transfer parser (DoS).
+CVE-2026-97689
